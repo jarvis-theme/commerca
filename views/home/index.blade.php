@@ -74,12 +74,15 @@
 					<!-- carousel wrapper -->
 					<div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
 						<ul class="products-container product-grid carousel-list portrait ">
-							@foreach($newproduk as $key=>$myproduk)
+							@foreach($newproduk as $key=>$myproduk)	
 								<li>
 									<div class="product">
 										<a href="{{slugProduk($myproduk)}}" class="product-link clearfix">
-											{{is_terlaris($myproduk)}}
-											{{is_outstok($myproduk)}}
+											@if(is_terlaris($myproduk))	
+											   <div class="ribbon special">Terlaris</div>
+											@elseif(is_outstok($myproduk))	
+												<div class="ribbon special">Kosong</div>
+											@endif	
 											<div class="product-thumbnail">
 												<img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="{{$myproduk->nama}}" />
 											</div>
@@ -94,20 +97,21 @@
 											<h4 class="title">
 												<a href="{{slugProduk($myproduk)}}">{{$myproduk->nama}}</a>
 											</h4>
-											@if($setting->checkoutType!=2)
+											@if($setting->checkoutType!=2)	
 												<div class="details">
-													<div class="product-price"> 
-														<span class="price-old">{{jadiRupiah($myproduk->hargaCoret,$matauang)}}</span> 
+													<div class="product-price">
+														@if($myproduk->hargaCoret != 0)	
+														<span class="price-old">{{jadiRupiah($myproduk->hargaCoret,$matauang)}}</span>
+														@endif	
 														<span class="price-new">{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span> 
-													</div>
-													
+													</div>													
 													<!-- <p class="by"><img src="image/stars-5.png"/></p> -->
 												</div>
-											@endif
+											@endif	
 										</div>
 									</div>
 								</li>
-							@endforeach
+							@endforeach	
 						</ul>
 					</div>
 					<!-- /carousel wrapper -->					
@@ -145,9 +149,13 @@
 						<div class="col-xs-12 col-sm-6 col-lg-3 products-container">
 							<div class="product">
 								<a href="{{slugProduk($myproduk)}}" class="product-link clearfix">
-									{{is_terlaris($myproduk)}}
-									{{is_produkbaru($myproduk)}}
-									{{is_outstok($myproduk)}}
+									@if(is_terlaris($myproduk))	
+									   <div class="ribbon special">Terlaris</div>
+									@elseif(is_produkbaru($myproduk))	
+									   <span class="ribbon special">Baru</span>
+									@elseif(is_outstok($myproduk))	
+										<div class="ribbon special">Kosong</div>
+									@endif	
 									<div class="product-thumbnail">
 										<img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="Best-Produk" />
 									</div>
@@ -168,27 +176,29 @@
 											<span class="price-old">{{jadiRupiah($myproduk->hargaCoret)}}</span>
 											@endif	
 											<span class="price-new">{{jadiRupiah($myproduk->hargaJual)}}</span> 
-										</div>
-										
+										</div>										
 										<!-- <p class="by"><img src="image/stars-5.png" alt="Stars"/></p> -->
 									</div>
 								</div>
 							</div>
 						</div>
-						@endif
-					@endforeach
+						@endif	
+					@endforeach	
 				</div>						
 				<!-- / LATEST PRODUCTS -->
 
 				<!-- FEATURED PRODUCTS -->
 				<div class="tab-pane animated animation-done rollIn" data-animation="rollIn" id="feat">
-					@foreach($bestseller as $key=>$myproduk)
-						@if($key<4)
+					@foreach($bestseller as $key=>$myproduk)	
+						@if($key<4)	
 						<div class="col-xs-12 col-sm-6 col-lg-3 products-container">
 							<div class="product">
 								<a href="{{slugProduk($myproduk)}}" class="product-link clearfix">
-									{{is_terlaris($myproduk)}}
-									{{is_outstok($myproduk)}}
+									@if(is_terlaris($myproduk))	
+									   <div class="ribbon special">Terlaris</div>
+									@elseif(is_outstok($myproduk))	
+										<div class="ribbon special">Kosong</div>
+									@endif	
 									<div class="product-thumbnail">
 										<img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="Hot-Produk" />
 									</div>
@@ -210,8 +220,7 @@
 											<span class="price-old">{{jadiRupiah($myproduk->hargaCoret)}}</span>
 											@endif
 											<span class="price-new">{{jadiRupiah($myproduk->hargaJual)}}</span> 
-										</div>
-										
+										</div>										
 										<!-- <p class="by"><img src="image/stars-5.png" alt="Stars"/></p> -->
 									</div>
 								</div>
@@ -229,9 +238,13 @@
 						<div class="col-xs-12 col-sm-6 col-lg-3 products-container">
 							<div class="product">
 								<a href="{{slugProduk($myproduk)}}" class="product-link clearfix">
-									{{is_terlaris($myproduk)}}
-									{{is_produkbaru($myproduk)}}
-									{{is_outstok($myproduk)}}
+									@if(is_terlaris($myproduk))	
+									   <div class="ribbon special">Terlaris</div>
+									@elseif(is_produkbaru($myproduk))	
+									   <span class="ribbon special">Baru</span>
+									@elseif(is_outstok($myproduk))	
+										<div class="ribbon special">Kosong</div>
+									@endif	
 									<div class="product-thumbnail">
 										<img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="Featured-Produk" />
 									</div>
@@ -254,8 +267,7 @@
 											<span class="price-old">{{jadiRupiah($myproduk->hargaCoret)}}</span>
 											@endif	
 											<span class="price-new">{{jadiRupiah($myproduk->hargaJual)}}</span>
-										</div>
-										
+										</div>										
 										<!-- <p class="by"><img src="image/stars-5.png" alt="Stars"/></p> -->
 									</div>
 								</div>

@@ -17,7 +17,7 @@
 </ul>
 </div>
 @endif
- 
+
 			<div id="site-wrapper">            
 				<!-- /BREADCRUMBS -->
 				<div class="breadcrumbs-wrapper">
@@ -42,8 +42,7 @@
 						</div>                    
 					</div>
 				</div>
-				<!-- /BREADCRUMBS -->
-				
+				<!-- /BREADCRUMBS -->				
 				<!-- SIDEBAR + MAIN CONTENT CONTAINER -->
 				<div class="main-content">
 					<div class="container">                    
@@ -85,7 +84,7 @@
 								</div>
 								@endif
 								<div class="clearfix "></div>
-								@foreach(getBanner(1) as $key=>$banner)
+								@foreach(getBanner(2) as $key=>$banner)
 								<div class="section  module-list-items">
 									<div class="cat-image">
 										<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>                                    

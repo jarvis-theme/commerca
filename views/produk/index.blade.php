@@ -245,6 +245,7 @@
 									</a>
 								</div>							
 							</div>
+							<br>
 						</div>  
 						@endforeach                                    
 					</div>

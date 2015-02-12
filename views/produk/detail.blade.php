@@ -7,7 +7,7 @@
 								<div class="breadcrumbs">
 									<ul class="unstyled">
 										<li><a href="{{URL::to('/')}}">Home</a></li>
-										{{$breadcrumb}}													
+										{{$breadcrumb}}
 									</ul>
 								</div>
 							</div>
@@ -101,7 +101,7 @@
 								<!-- BANNER MODULE -->
 								<div class="accordionmenu section">
 								<h4 class="section-title">BANNER</h4>
-								@foreach(getBanner(1) as $key=>$banner)
+								@foreach(getBanner(2) as $key=>$banner)
 								<div class="section banner-show">
 									<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>
 								</div>
@@ -253,7 +253,7 @@
 										</div>
 									</div>
 								</div>
-								
+								@if(count($produklain) != 0)
 								<!-- RELATED PRODUCTS -->
 								<div class="section carousel-iframe">
 									<div class="container">									
@@ -281,13 +281,17 @@
 													<!-- carousel wrapper -->
 													<div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
 														<ul class="products-container product-grid carousel-list portrait ">
-															@foreach($produklain as $myproduk)
+															@foreach($produklain as $myproduk)	
 															<li>
 																<div class="product">
 																	<a href="{{URL::to(slugProduk($myproduk))}}" class="product-link clearfix">
-																		{{is_terlaris($myproduk)}}
-																		{{is_produkbaru($myproduk)}}
-																		{{is_outstok($myproduk)}}
+																		@if(is_terlaris($myproduk))	
+																			<div class="ribbon special">Featured</div>
+																		@elseif(is_produkbaru($myproduk))	
+																			<span class="ribbon special">Baru</span>
+																		@elseif(is_outstok($myproduk))	
+																			<div class="ribbon special">Kosong</div>
+																		@endif	
 																		<div class="product-thumbnail">
 																			{{HTML::image(getPrefixDomain().'/produk/'.$myproduk->gambar1, $myproduk->nama, array('style' => 'height:220px'))}}
 																		</div>
@@ -304,17 +308,17 @@
 																		<h4 class="title">
 																			<a href="{{URL::to(slugProduk($myproduk))}}">{{$myproduk->nama}}</a>
 																		</h4>
-																		@if($setting->checkoutType!=2)
+																		@if($setting->checkoutType!=2)	
 																		<div class="details">
 																			<div class="product-price"> 
 																				<span class="price-old">
-																				@if($myproduk->hargaCoret != 0)
+																				@if($myproduk->hargaCoret != 0)	
 																				{{jadiRupiah($myproduk->hargaCoret)}}</span>
-																				@endif 
+																				@endif	
 																				<span class="price-new">{{jadiRupiah($myproduk->hargaJual)}}</span> 
 																			</div>
 																		</div>
-																		@endif
+																		@endif	
 																	</div>
 																</div>
 															</li>
@@ -327,7 +331,8 @@
 										</div>
 									</div>
 								</div>
-								<!-- /RELATED PRODUCTS -->							
+								<!-- /RELATED PRODUCTS -->
+								@endif	
 							</div>
 						</div>
 					</div>

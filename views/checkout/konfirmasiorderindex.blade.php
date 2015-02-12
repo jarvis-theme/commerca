@@ -41,7 +41,7 @@
 						<div class="section  module-list-items">
 							<h4 class="section-title">Banner</h4>
 							<div class="section-inner">
-								@foreach(getBanner(1) as $key=>$banner)
+								@foreach(getBanner(2) as $key=>$banner)
 								<div class="section">
 									<div class="cat-image">
 										<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>                                    

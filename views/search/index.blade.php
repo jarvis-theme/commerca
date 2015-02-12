@@ -98,7 +98,7 @@
 									<!-- carousel wrapper -->
 									<div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
 										<ul class="products-container product-grid carousel-list portrait">
-											@foreach($koleksi as $mykoleksi)
+											@foreach($koleksi_produk as $mykoleksi)
 											<li>
 												<div class="product">
 													<a href="{{slugKoleksi($mykoleksi)}}" class="product-link clearfix">
