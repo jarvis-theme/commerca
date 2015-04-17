@@ -73,7 +73,7 @@
 										<h4 class="section-title">Banner</h4>
 										<div class="section-inner">												
 											<!-- carousel control nav direction -->
-											<div class="carousel-direction-arrows">
+											<!-- <div class="carousel-direction-arrows">
 												<ul class="direction-nav carousel-direction">
 													<li>
 														<a class="crsl-prev btn" href="#">
@@ -86,18 +86,20 @@
 														</a>
 													</li>
 												</ul>
-											</div>
+											</div> -->
 											<!-- /carousel control nav direction -->
 											
 											<!-- carousel wrapper -->
 											<div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
 												<ul class="products-container product-grid carousel-list portrait  ">
-												@foreach(getBanner(2) as $key=>$banner)
+												@foreach(horizontal_banner() as $key=>$banner)
 													<li>
 														<div class="product">
-																<div class="product-thumbnail">
-																	<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>                                             
-																</div>
+															<div class="product-thumbnail">
+																<a href="{{URL::to($banner->url)}}">
+																	{{HTML::image(banner_image_url($banner->gambar),'',array('width'=>'100%'))}}
+																</a>
+															</div>
 														</div>
 													</li>
 												@endforeach
@@ -138,7 +140,7 @@
 										</td>
 										<td>
 											@foreach ($item->detailorder as $detail)
-											<div>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku->opsi1.($detail->opsisku->opsi2 != '' ? ' / '.$detail->opsisku->opsi2:'').($detail->opsisku->opsi3 !='' ? ' / '.$detail->opsisku->opsi3:'').')':''}} - {{$detail->qty}}</div><br>
+											<div>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku["opsi1"].($detail->opsisku["opsi2"] != '' ? ' / '.$detail->opsisku["opsi2"]:'').($detail->opsisku["opsi3"] !='' ? ' / '.$detail->opsisku["opsi3"]:'').')':''}} - {{$detail->qty}}</div><br>
 											@endforeach
 											
 											@if($item->status==0)
@@ -161,10 +163,10 @@
 											<div class="qty-btngroup">{{waktu($item->tanggalOrder)}}</div>
 										</td>
 										<td>
-											<span class="price">{{ price($item->total)}}</span>
+											<span class="price">{{ price($item->total) }}</span>
 										</td>
 										<td>
-											<span>{{ $item->noResi}}</span>
+											<span>{{ $item->noResi }}</span>
 										</td>
 										<td>
 											@if($item->status!=2 || $item->status!=3)
@@ -186,7 +188,7 @@
 										</td>
 										<td>
 											@foreach ($item->detailInquiry as $detail)
-											<div>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku->opsi1.($detail->opsisku->opsi2 != '' ? ' / '.$detail->opsisku->opsi2:'').($detail->opsisku->opsi3 !='' ? ' / '.$detail->opsisku->opsi3:'').')':''}} - {{$detail->qty}}</div><br>
+											<div>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku["opsi1"].($detail->opsisku["opsi2"] != '' ? ' / '.$detail->opsisku["opsi2"]:'').($detail->opsisku["opsi3"] !='' ? ' / '.$detail->opsisku["opsi3"]:'').')':''}} - {{$detail->qty}}</div><br>
 											@endforeach
 											
 											<small>Status: </small>
@@ -233,7 +235,7 @@
 										</td>
 										<td>
 											@foreach ($item->detailorder as $detail)
-											<div>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku->opsi1.($detail->opsisku->opsi2 != '' ? ' / '.$detail->opsisku->opsi2:'').($detail->opsisku->opsi3 !='' ? ' / '.$detail->opsisku->opsi3:'').')':''}} - {{$detail->qty}}</div><br>
+											<div>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku["opsi1"].($detail->opsisku["opsi2"] != '' ? ' / '.$detail->opsisku["opsi2"]:'').($detail->opsisku["opsi3"] !='' ? ' / '.$detail->opsisku["opsi3"]:'').')':''}} - {{$detail->qty}}</div><br>
 											@endforeach
 											
 											<small>Status: </small>

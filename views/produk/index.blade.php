@@ -32,14 +32,14 @@
 				<!-- CATEGORIES LIST -->
 				<div class="accordionmenu section">
 					<h4 class="section-title">Kategori</h4>
-					@foreach($kategori as $key=>$menu)
+					@foreach(list_category() as $key=>$menu)
 						@if($menu->parent=='0')
 							<a class="menuitem submenuheader" href="#" >{{$menu->nama}}</a>
-							@foreach($kategori as $key=>$submenu)
+							@foreach(list_category() as $key=>$submenu)
 								@if($menu->id==$submenu->parent)
 								<div class="submenu">
 									<ul class="unstyled pretty-list arrow-list cl-effect-1">
-										<li><a href="{{slugKategori($submenu)}}">{{$submenu->nama}}</a></li>
+										<li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
 									</ul>
 								</div>
 								@endif
@@ -48,31 +48,6 @@
 					@endforeach
 				</div>
 				<!-- /CATEGORIES LIST -->
-				
-				<!-- ACCORDION MENU -->
-				{{HTML::script(dirTemaToko().'commerce/assets/js/jquery.ddaccordion.min.js')}}
-				<script type="text/javascript">
-				ddaccordion.init({
-					headerclass: "submenuheader", //Shared CSS class name of headers group
-					contentclass: "submenu", //Shared CSS class name of contents group
-					revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
-					mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-					collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
-					defaultexpanded: [], //index of content(s) open by default [index1, index2, etc] [] denotes no content
-					onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
-					animatedefault: false, //Should contents open by default be animated into view?
-					persiststate: true, //persist state of opened contents within browser session?
-					toggleclass: ["", ""], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
-					togglehtml: ["suffix", "<img src='image/plus_red.png' class='statusicon' />", "<img src='image/minus_red.png' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
-					animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-					oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
-						//do nothing
-					},
-					onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
-						//do nothing
-					}
-				})
-				</script>
 				
 				<!-- Latest products -->
 				<div class="section carousel-iframe">
@@ -102,13 +77,13 @@
 									<!-- carousel wrapper -->
 									<div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
 										<ul class="products-container product-grid carousel-list portrait">
-										 @foreach($koleksi as $mykoleksi)	
+										 @foreach(list_koleksi() as $mykoleksi)	
 											<li>
 												<div class="product">
-													<a href="{{slugKoleksi($mykoleksi)}}" class="product-link clearfix">
+													<a href="{{koleksi_url($mykoleksi)}}" class="product-link clearfix">
 														<div class="ribbon special">{{$mykoleksi->nama}}</div>
-														<div class="product-thumbnail">
-															<img src="{{URL::to(getPrefixDomain().'/koleksi/'.$mykoleksi->gambar)}}" alt="banner" />
+														<div class="product-thumbnail" style="min-height: 220px; min-width: 257px;">
+															{{HTML::image(koleksi_image_url($mykoleksi->gambar), 'Koleksi')}}
 														</div>
 													</a>
 												</div>
@@ -131,9 +106,11 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
 						<div class="cat-image">
-						@foreach(getBanner(2) as $key=>$banner)
+						@foreach(horizontal_banner() as $key=>$banner)
 							@if($key==0)
-							<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>
+							<a href="{{URL::to($banner->url)}}">
+								{{HTML::image(banner_image_url($banner->gambar), '', array('width'=>'100%'))}}
+							</a>
 							@endif
 						@endforeach
 						</div>
@@ -179,10 +156,10 @@
 			
 				<div id="product-list-container" class="section offer products-container portrait three-column" data-layout="grid">
 					<div class="row">
-						@foreach($produk as $myproduk)
+						@foreach(list_product() as $myproduk)
 						<div class="mix col-xs-12 col-sm-6 col-lg-4">
 							<div class="product"  data-name="Demo Product1">
-								<a href="{{slugProduk($myproduk)}}" class="product-link clearfix">
+								<a href="{{product_url($myproduk)}}" class="product-link clearfix">
 									@if(is_terlaris($myproduk))
 									   <div class="ribbon special">Terlaris</div>
 									@elseif(is_produkbaru($myproduk))
@@ -190,28 +167,28 @@
 									@elseif(is_outstok($myproduk))
 										<div class="ribbon special">Kosong</div>
 									@endif
-									<div class="product-thumbnail">
-										<img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="product" title="product" />
+									<div class="product-thumbnail" style="height: 257px;">
+										{{HTML::image(product_image_url($myproduk->gambar1, 'large'), 'Produk')}}
 									</div>
 								</a>
 								<div class="button-add">
 									<div class="button-add-inner">
 										<!-- <a onclick="#" class="wishlist-hover" title="">  ADD TO WISHLIST</a> -->
-										<a onclick="window.location.href='{{slugProduk($myproduk)}}'" class="compare-hover" title="">  Lihat Produk</a>
+										<a onclick="window.location.href='{{product_url($myproduk)}}'" class="compare-hover" title="">  Lihat Produk</a>
 										<!-- <a onclick="#" class="add-to-cart cart-hover" title=""> ADD TO CART</a> -->
 									</div>
 								</div>
 								<div class="product-info clearfix">
 									<h4 class="title">
-										<a href="{{slugProduk($myproduk)}}">{{$myproduk->nama}}</a>
+										<a href="{{product_url($myproduk)}}">{{short_description($myproduk->nama, 25)}}</a>
 									</h4>
 									@if($setting->checkoutType!=2)
 										<div class="details">
 											<div class="product-price">
 												@if($myproduk->hargaCoret != 0)
-												<span class="price-old">{{jadiRupiah($myproduk->hargaCoret,$matauang)}}</span>
+												<span class="price-old">{{price($myproduk->hargaCoret,$matauang)}}</span>
 												@endif
-												<span class="price-new">{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
+												<span class="price-new">{{price($myproduk->hargaJual,$matauang)}}</span>
 											</div>
 										</div>
 									@endif
@@ -220,7 +197,7 @@
 											<p>{{$myproduk->deskripsi}}</p><br>
 										</div>
 										<div class="add-to-cart">
-											<a  onclick="window.location.href='{{slugProduk($myproduk)}}'" title="" class="btn btn-primary btn-iconed"><i class="icon-cart2"></i><span>Lihat Produk</span></a>
+											<a  onclick="window.location.href='{{product_url($myproduk)}}'" title="" class="btn btn-primary btn-iconed"><i class="icon-cart2"></i><span>Lihat Produk</span></a>
 										</div>
 										<!-- <ul class="links">
 											<li><a onclick="" title="ADD TO WISHLIST" ><i class="icon-heart2"></i></a></li>
@@ -229,7 +206,7 @@
 										<div class="ratings-list">
 											<p></p>
 											<p class="by">
-											<!-- <img src="image/stars-5.png"/> -->
+												<!-- <img src="image/stars-5.png"/> -->
 											</p>
 										</div>
 									</div>

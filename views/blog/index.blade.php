@@ -37,9 +37,9 @@
 						<h4 class="section-title">Kategori</h4>
 						<div class="section-inner">
 							<ul class="unstyled pretty-list cl-effect-1">
-								@foreach($categoryList as $key=>$value)
-									<li><a href="{{URL::to('blog/category/'.generateSlug($value))}}">{{$value->nama}}</a></li>
-								@endforeach
+							@foreach(list_blog_category() as $key=>$value)
+								<li><a href="{{blog_category_url($value)}}">{{$value->nama}}</a></li>
+							@endforeach
 							</ul>
 						</div>
 					</div>
@@ -49,17 +49,15 @@
 						<h4 class="section-title">Blog Terbaru</h4>
 						<div class="section-inner">
 							<ul class="unstyled pretty-list cl-effect-1">
-								@foreach(recentBlog() as $recent)
-									<li>
-										<a href="{{URL::to('blog/'.$recent->slug)}}">{{$recent->judul}}</a><br />
-										<small style="margin-left: 15px;">— diposting {{waktuTgl($recent->updated_at)}}</small>
-									</li>
-								@endforeach
+							@foreach(recentBlog() as $recent)
+								<li>
+									<a href="{{blog_url($recent)}}">{{$recent->judul}}</a><br />
+									<small style="margin-left: 15px;">— diposting {{waktuTgl($recent->updated_at)}}</small>
+								</li>
+							@endforeach
 							</ul>
 						</div>
 					</div>
-					
-
 				</div>
 				<!-- /SIDE BAR -->
 
@@ -71,14 +69,16 @@
 					<!-- <small>Date: 12 Januari 2014 <span>&nbsp;&nbsp; Kategori: Book</span></small> -->
 				</div>
 				<div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
-				@foreach($data as $key=>$value)
-					<a href="{{URL::to('blog/'.$value->slug)}}"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out">
-						<div class="description">
-							<div class="cat-image"><h2 style="margin: 0;">{{$value->judul}}</h2></div>
-							<small style="margin:8px;"><span class="icon-calendar"></span> {{waktuTgl($value->updated_at)}} <span>&nbsp;&nbsp;</span></small> <br><br>               
-							{{blogIndex($value->isi,250)}}
+				@foreach(list_blog() as $key=>$value)
+					<a href="{{blog_url($value)}}">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out">
+							<div class="description">
+								<div class="cat-image"><h2 style="margin: 0;">{{$value->judul}}</h2></div>
+								<small style="margin:8px;"><span class="icon-calendar"></span> {{waktuTgl($value->updated_at)}} <span>&nbsp;&nbsp;</span></small> <br><br>               
+								{{blogIndex($value->isi,250)}}
+							</div>
 						</div>
-					</div></a>
+					</a>
 				@endforeach 
 				<div class="clearfix "></div>   
 				{{$data->links()}}
@@ -87,8 +87,7 @@
 				</div>
 				<!-- /MAIN CONTENT -->
 			
-			</div>
-		
+			</div>		
 		</div>
 	</div>
 	<!-- /MAIN CONTENT -->

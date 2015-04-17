@@ -53,7 +53,7 @@
 					<div class="widget">
 						<h4 class="widget-header">Posting Terbaru</h4>
 						<div class="widget-inner">
-							@foreach ($blogBaru as $items)
+							@foreach (list_blog(3) as $items)
 							<div class="media">
 								<a href="{{slugBlog($items)}}">{{$items->judul}}</a><br />
 								<small>— diposting pada {{waktuTgl($items->created_at)}}</small>
@@ -145,7 +145,11 @@
 								@foreach($group->link as $key=>$link)
 									<li>
 										@if($link->halaman=='1')
+											@if($link->linkTo == 'halaman/about-us')
+											<a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
+											@else
 											<a href={{"'".URL::to("halaman/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
+											@endif
 										@elseif($link->halaman=='2')
 											<a href={{"'".URL::to("blog/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
 										@elseif($link->url=='1')
@@ -177,6 +181,15 @@
 								@foreach($bank as $value)
 								<li><img style="" src="{{URL::to('img/'.$value->bankdefault->logo)}}" alt="" /></li>
 								@endforeach
+								@if(list_payments()[0]->aktif == 1)
+								<li><img src="{{URL::to('img/bank/paypal.png')}}" alt="support paypal" /></li>
+								@endif
+								@if(list_payments()[2]->aktif == 1)
+								<li><img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="support ipaymu" /></li>
+								@endif
+								@if(count(list_dokus()) > 0 && list_dokus()->status == 1)
+								<li><img src="{{URL::to('img/bank/doku.jpg')}}" alt="support doku myshortcart" /></li>
+								@endif
 							</ul>
 						</div>
 					</div>

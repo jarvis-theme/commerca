@@ -2,16 +2,16 @@
 <!--[if IE 8]><script src="js/respond.min.js"></script><![endif]-->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 <!-- <script>window.jQuery || document.write(""<script src="http://example.jarvis-store.test/themes/7-tema/commerca/assets/js/jquery.min.js");</script> -->
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/bootstrap.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/modernizr.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/package.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.tweet.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/scripts.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.flexslider.min.js')}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/bootstrap.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/modernizr.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/package.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.tweet.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/scripts.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.flexslider.min.js')--}}
 
 <script>
-    jQuery(function($) {
+    /*jQuery(function($) {
         var $slider = $('#top-slider > .flexslider');
         $slider.imagesLoaded(function() {
             $slider.flexslider({
@@ -41,9 +41,11 @@
                 $caption.css( 'top', top + 'px' );
             });
         });
-    });
+    });*/
 </script>
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.carouFredSel.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.mixitup.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.nouislider.min.js')}}
-{{HTML::script(dirTemaToko().'commerca/assets/js/jquery.zoom-min.js')}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.carouFredSel.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.mixitup.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.nouislider.min.js')--}}
+{{--HTML::script(dirTemaToko().'commerca/assets/js/lib/jquery.zoom-min.js')--}}
+
+<script data-main="http://{{Request::server('SERVER_NAME').'/'.dirTemaToko()}}commerca/assets/js/app-main" src="/js/require.js"></script>

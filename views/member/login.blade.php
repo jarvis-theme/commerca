@@ -29,10 +29,12 @@
 				<!-- SIDE BAR -->
 				<div class="col-xs-12 col-sm-4 col-lg-3 pull-right sidebar">
 					<!-- CHOOSE COLOR -->
-					@foreach(getBanner(1) as $key=>$banner)
+					@foreach(vertical_banner() as $key=>$banner)
 					<div class="section  module-list-items">
 						<div class="cat-image">
-							<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>                                    
+							<a href="{{URL::to($banner->url)}}">
+								<img src="{{banner_image_url($banner->gambar)}}" width="100%"/>
+							</a>                                    
 						</div>
 					</div>      
 					@endforeach

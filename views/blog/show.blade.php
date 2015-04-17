@@ -37,8 +37,8 @@
 						<h4 class="section-title">Kategori</h4>
 						<div class="section-inner">
 							<ul class="unstyled pretty-list cl-effect-1">
-								@foreach($categoryList as $key=>$value)
-								<li><a href="{{URL::to('blog/category/'.generateSlug($value))}}">{{$value->nama}}</a></li>
+								@foreach(list_blog_category() as $key=>$value)
+								<li><a href="{{blog_category_url($value)}}">{{$value->nama}}</a></li>
 								@endforeach
 							</ul>
 						</div>
@@ -50,7 +50,7 @@
 						<div class="section-inner">
 							<ul class="unstyled pretty-list cl-effect-1">
 								@foreach(recentBlog() as $recent)
-								<li><a href="{{URL::to('blog/'.$recent->slug)}}">{{$recent->judul}}</a><br /><small style="margin-left: 20px;">diposting {{waktuTgl($recent->updated_at)}}</small></li>
+								<li><a href="{{blog_url($recent)}}">{{$recent->judul}}</a><br /><small style="margin-left: 20px;">diposting {{waktuTgl($recent->updated_at)}}</small></li>
 								@endforeach
 							</ul>
 						</div>

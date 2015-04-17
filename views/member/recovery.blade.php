@@ -51,26 +51,25 @@
                                     </div>
                                     <div class="col-2">
                                         <h3>Masukan Password Baru Anda</h3>
-                                            <!-- <form class="form-horizontal" action="{{URL::to('member/forgetpassword')}}" method="post"> -->
-                                            {{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, 'class' => 'form-horizontal'))}}
-                                            <fieldset>
-                                                <ul class="form-list">
-                                                    <li>
-                                                        <label class="required" for="login-email"><em>*</em>Password Baru</label>
-                                                        <div class="input-box">
-                                                            <input type="password" name="password" id="inputPassword" placeholder="password baru" required>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <label class="required" for="login-email"><em>*</em>Ulangi Password Baru</label>
-                                                        <div class="input-box">
-                                                            <input type="password" name="password_confirmation" id="inputPassword" placeholder="password baru" required>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <br/>
-                                                <br/>
-                                            </fieldset>
+                                        <!-- <form class="form-horizontal" action="{{URL::to('member/forgetpassword')}}" method="post"> -->
+                                        {{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, 'class' => 'form-horizontal'))}}
+                                        <fieldset>
+                                            <ul class="form-list">
+                                                <li>
+                                                    <label class="required" for="login-email"><em>*</em>Password Baru</label>
+                                                    <div class="input-box">
+                                                        <input type="password" name="password" id="inputPassword" placeholder="password baru" required>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <label class="required" for="login-email"><em>*</em>Ulangi Password Baru</label>
+                                                    <div class="input-box">
+                                                        <input type="password" name="password_confirmation" id="inputPassword" placeholder="password baru" required>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <br/><br/>
+                                        </fieldset>
                                     </div>
                                 </div>
                                 <br></br>
@@ -125,7 +124,7 @@
                             </ul>
                     </div>
                     <div class="right_promo">
-                    <img src="images/side_promo_banner.jpg">
+                        <img src="images/side_promo_banner.jpg">
                     </div>
                 </div>
             </div>

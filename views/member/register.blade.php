@@ -52,10 +52,13 @@
 						<div class="section  module-list-items">
 							<h4 class="section-title">Banner</h4>
 							<div class="section-inner">
-								@foreach(getBanner(1) as $key=>$banner)
+								@foreach(vertical_banner() as $key=>$banner)
 								<div class="section">
 									<div class="cat-image">
-										<a href="{{URL::to($banner->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$banner->gambar)}}" width="100%"/></a>                                    
+										<a href="{{URL::to($banner->url)}}">
+											<!-- <img src="{{banner_image_url($banner->gambar)}}" width="100%"/> -->
+											{{HTML::image(banner_image_url($banner->gambar),'', array('width'=>'100%'))}}
+										</a>
 									</div>
 								</div>      
 								@endforeach
@@ -104,19 +107,19 @@
 											<tr>
 												<td><span class="required">*</span> Negara:</td>
 												<td>
-													{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara , Input::old("negara"), array('required', 'name="negara" id="negara" data-rel="chosen" onchange="searchProvinsi(this.value)"'))}}
+													{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara , Input::old("negara"), array('required', 'name'=>"negara", 'id'=>"negara", 'data-rel'=>"chosen"))}}
 												</td>
 											</tr>
 											<tr>
 												<td><span class="required">*</span> Provisi:</td>
 												<td>
-													{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', 'name="provinsi" id="provinsi" data-rel="chosen" onchange="searchKabupaten(this.value)"'))}}
+													{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', 'name'=>"provinsi", 'id'=>"provinsi", 'data-rel'=>"chosen"))}}
 												</td>
 											</tr>
 											<tr>
 												<td><span class="required">*</span> Kabupaten:</td>
 												<td>
-													{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required name="kota" id="kota" data-rel="chosen"'))}}
+													{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required', 'name'=>"kota", 'id'=>"kota", 'data-rel'=>"chosen"))}}
 												</td>
 											</tr>
 										</tbody>
