@@ -58,7 +58,6 @@
 	<div class="container"> 
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-lg-12 main">
-                                
                 <!-- CART ITEMS -->
                 <div class="section">
                     <table class="my-cart">
@@ -106,22 +105,22 @@
 								@endif
 							</td>
 
-							<td>{{jadiRupiah($order->total)}}</td>
+							<td>{{price($order->total)}}</td>
 
 							<td class="align_center vline">
 
 								@if($checkouttype==1)
-								- {{jadiRupiah($order->total)}}
+								- {{price($order->total)}}
 								
 								@else 
 
 									@if($order->status < 2)
 
-									- {{jadiRupiah($order->total)}}
+									- {{price($order->total)}}
 									
 									@elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
 
-									- {{jadiRupiah($order->total - $order->dp)}}
+									- {{price($order->total - $order->dp)}}
 
 									@else
 
@@ -184,101 +183,61 @@
                 <br>
                 <div class="clear"></div>
                 <div class="well">
-						            	
-						            	@if($checkouttype==1)
-						            	{{Form::open(array('url'=> 'konfirmasiorder/'.$order->id, 'method'=>'put', 'class'=> 'form-horizontal'))}}	
-						            	@else
-						            	{{Form::open(array('url'=> 'konfirmasipreorder/'.$order->id, 'method'=>'put', 'class'=> 'form-horizontal'))}}	
-						            	@endif
-						            	
-											<div class="control-group">
+	            	@if($checkouttype==1)
+	            	{{Form::open(array('url'=> 'konfirmasiorder/'.$order->id, 'method'=>'put', 'class'=> 'form-horizontal'))}}	
+	            	@else
+	            	{{Form::open(array('url'=> 'konfirmasipreorder/'.$order->id, 'method'=>'put', 'class'=> 'form-horizontal'))}}	
+	            	@endif
+	            	
+					<div class="control-group">
+						<label class="control-label" for="inputEmail" > Nama Pengirim</label>
+						<div class="controls">
+						  	<input class="span6" type="text" name='nama' value='{{Input::old("nama")}}' required>
+						</div>
+					</div>
 
-											<label class="control-label" for="inputEmail" > Nama Pengirim</label>
+					<div class="control-group">
+						<label class="control-label" for="inputEmail"> No Rekening</label>
+						<div class="controls">
+						  	<input type="text" class="span6" name='noRekPengirim' value='{{Input::old("noRekPengirim")}}' required>
+						</div>
+					</div>
 
-											<div class="controls">
+					<div class="control-group">
+						<label class="control-label" for="inputEmail"> Rekening Tujuan</label>
+						<div class="controls" style="width: 40%;">
+							<select name='bank' style="width: 100%;">
+								<option value=''>-- Pilih Bank Tujuan --</option>
+								@foreach ($banktrans as $bank)
+								<option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<br>
+					<div class="control-group">
+						<label class="control-label" for="inputEmail" style=""> Jumlah</label>
+						<div class="controls" >
+							@if($checkouttype==1)
+								<input class="span6" type="text" name='jumlah' value='{{$order->total}}' required>
+			            	@else
+			            		@if($order->status < 2)
+								<input class="span6" type="text" name='jumlah' value='{{$order->dp}}' required>
+								@elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
+								<input class="span6" type="text" name='jumlah' value='{{$order->total - $order->dp}}' required>
+								@endif
+			            	@endif
+						</div>
+					</div>
 
-											  	<input class="span6" type="text" name='nama' value='{{Input::old("nama")}}' required>
-
-											</div>
-
-											</div>
-
-											<div class="control-group">
-
-											<label class="control-label" for="inputEmail"> No Rekening</label>
-
-											<div class="controls">
-
-											  	<input type="text" class="span6" name='noRekPengirim' value='{{Input::old("noRekPengirim")}}' required>
-
-											</div>
-
-											</div>
-
-											<div class="control-group">
-
-											<label class="control-label" for="inputEmail"> Rekening Tujuan</label>
-
-											<div class="controls" style="width: 40%;">
-
-												<select name='bank' style="width: 100%;">
-
-													<option value=''>-- Pilih Bank Tujuan --</option>
-
-													@foreach ($banktrans as $bank)
-
-														<option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
-
-													@endforeach
-
-												</select>
-
-											</div>
-
-											</div>
-
-											<br>
-
-											<div class="control-group">
-
-											<label class="control-label" for="inputEmail" style=""> Jumlah</label>
-
-											<div class="controls" >
-												@if($checkouttype==1)
-								            		
-													<input class="span6" type="text" name='jumlah' value='{{$order->total}}' required>
-
-								            	@else
-								            		@if($order->status < 2)
-
-													<input class="span6" type="text" name='jumlah' value='{{$order->dp}}' required>
-													
-													@elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-
-													<input class="span6" type="text" name='jumlah' value='{{$order->total - $order->dp}}' required>
-
-													@endif
-
-								            	@endif
-								            	
-											</div>
-
-											</div>
-
-											
-
-											<div class="control-group">
-
-											<div class="controls" style="text-align: right;">
-
-											  <button type="submit" class="btn theme"><i class="icon-check"></i> Konfirmasi Order</button>
-
-											</div>
-
-											</div>
-
-										{{Form::close()}}
+					<div class="control-group">
+						<div class="controls" style="text-align: right;">
+							<button type="submit" class="btn theme"><i class="icon-check"></i> Konfirmasi Order</button>
+						</div>
+					</div>
+					{{Form::close()}}
 				</div>
+			</div>
 		</div>
 	</div>
 </div>

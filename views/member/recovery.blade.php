@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-2">
                                         <h3>Masukan Password Baru Anda</h3>
-                                        <!-- <form class="form-horizontal" action="{{URL::to('member/forgetpassword')}}" method="post"> -->
+                                        <!-- <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post"> -->
                                         {{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, 'class' => 'form-horizontal'))}}
                                         <fieldset>
                                             <ul class="form-list">
@@ -76,13 +76,13 @@
                                 <div class="col2-set">
                                     <div class="col-1">
                                         <div class="buttons-set">
-                                            <button onClick="parent.location='{{URL::to('member/create')}}'" class="button brown_btn" type="button">Continue</button>
+                                            <button onClick="parent.location='{{url('member/create')}}'" class="button brown_btn" type="button">Continue</button>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="buttons-set">
-                                            <!-- <button onClick="parent.location='{{URL::to('member')}}'" class="button brown_btn" type="button">&larr; Login</button> -->
-                                            <a class="fl_right" href="{{URL::to('member/forgetPassword')}}">&larr; Login</a>
+                                            <!-- <button onClick="parent.location='{{url('member')}}'" class="button brown_btn" type="button">&larr; Login</button> -->
+                                            <a class="fl_right" href="{{url('member/forgetPassword')}}">&larr; Login</a>
                                             <button  class="button brown_btn" type="submit">Reset Password</button>
                                         </div>
                                     </div>
@@ -124,7 +124,9 @@
                             </ul>
                     </div>
                     <div class="right_promo">
-                        <img src="images/side_promo_banner.jpg">
+                    @foreach(vertical_banner() as $side_banner)
+                        {{HTML::image(banner_image_url($side_banner->gambar))}}
+                    @endforeach
                     </div>
                 </div>
             </div>

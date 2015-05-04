@@ -4,7 +4,7 @@
 				<div class="col-xs-12 col-sm-6 center-sm">
 					<div class="breadcrumbs">
 						<ul class="unstyled">
-							<li><a href="{{URL::to('/')}}">Home</a></li>
+							<li><a href="{{url('/')}}">Home</a></li>
 							<li class="active">Login Area</li>                                                
 						</ul>
 					</div>
@@ -32,7 +32,7 @@
 					@foreach(vertical_banner() as $key=>$banner)
 					<div class="section  module-list-items">
 						<div class="cat-image">
-							<a href="{{URL::to($banner->url)}}">
+							<a href="{{url($banner->url)}}">
 								<img src="{{banner_image_url($banner->gambar)}}" width="100%"/>
 							</a>                                    
 						</div>
@@ -45,7 +45,7 @@
 				<!-- MAIN CONTENT -->
 				<div class="col-xs-12 col-sm-8 col-lg-9 main">
 					<div class="section">
-						<form action="{{URL::to('member/login')}}" method="post" enctype="multipart/form-data">
+						<form action="{{url('member/login')}}" method="post" enctype="multipart/form-data">
 							<p>Silahkan Login untuk kemudahan melakukan checkout. Cepat dan Mudah dalam bertransaksi. Mudah untuk mengetahui Order Histori dan Status.</p>
 							<h2>Login</h2>
 							<div class="content">
@@ -60,7 +60,7 @@
 											<td><input type="password" placeholder="******" name="password" value="" required></td>
 										</tr>
 										<tr>
-											<td><a href="{{URL::to('member/forget-password')}}">Lupa Password ?</a></td>
+											<td><a href="{{url('member/forget-password')}}">Lupa Password ?</a></td>
 										</tr>
 									</tbody>
 								</table>
@@ -69,7 +69,7 @@
 								<div class="left"><input type="submit" value="Login" class="button"></div>
 								<div class="right">
 									Belum punya akun ? 
-									<a href="{{URL::to('member/create')}}" class="button">Daftar Sekarang </a>
+									<a href="{{url('member/create')}}" class="button">Daftar Sekarang </a>
 								</div>
 							</div>
 						</form>

@@ -6,7 +6,7 @@
 							<div class="col-xs-12 col-sm-6 center-sm">
 								<div class="breadcrumbs">
 									<ul class="unstyled">
-										<li><a href="{{URL::to('/')}}">Home</a></li>
+										<li><a href="{{url('/')}}">Home</a></li>
 										{{$breadcrumb}}
 									</ul>
 								</div>
@@ -82,7 +82,6 @@
 																<a href="{{koleksi_url($mykoleksi)}}" class="product-link clearfix">
 																	<div class="ribbon special">{{$mykoleksi->nama}}</div>
 																	<div class="product-thumbnail">
-																		<!-- <img src="{{koleksi_image_url($mykoleksi->gambar)}}" alt="banner" /> -->
 																		{{HTML::image(koleksi_image_url($mykoleksi->gambar), 'Koleksi')}}
 																	</div>
 																</a>
@@ -104,7 +103,7 @@
 								<h4 class="section-title">BANNER</h4>
 								@foreach(horizontal_banner() as $key=>$banner)
 								<div class="section banner-show">
-									<a href="{{URL::to($banner->url)}}">
+									<a href="{{url($banner->url)}}">
 										{{HTML::image(banner_image_url($banner->gambar),'Side Banner',array('width'=>'100%'))}}
 									</a>
 								</div>
@@ -222,7 +221,7 @@
 														@endif														
 													@endif
 													</form>
-													<br><br>													
+													<br><br>
 													<!-- /SHARE CONTENT -->
 													<div class="space20 clearfix"></div>
 													<div style="margin: 20px 0px; border-top: 1px solid #EEE; padding: 20px 0px;">
@@ -256,7 +255,7 @@
 										</div>
 									</div>
 								</div>
-								@if(count($produklain) != 0)
+								@if(count(other_product($produk)) != 0)
 								<!-- RELATED PRODUCTS -->
 								<div class="section carousel-iframe">
 									<div class="container">									
@@ -284,7 +283,7 @@
 													<!-- carousel wrapper -->
 													<div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
 														<ul class="products-container product-grid carousel-list portrait ">
-															@foreach($produklain as $myproduk)	
+															@foreach(other_product($produk) as $myproduk)	
 															<li>
 																<div class="product">
 																	<a href="{{product_url($myproduk)}}" class="product-link clearfix">

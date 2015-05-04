@@ -44,7 +44,7 @@ require.config({
 		},
 	},
     "waitSeconds" : 60,
-    urlArgs: "v=001",
+    urlArgs: "v=002",
 
 	paths: {
 		// LIBRARY
@@ -102,6 +102,9 @@ require([
 
 	// CATEGORY
 	router.define('category/*', 'category@run');
+
+	// KOLEKSI
+	router.define('koleksi/*', 'category@run');
 
 	// SEARCH
 	router.define('search/*', 'search@run');

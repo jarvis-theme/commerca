@@ -190,7 +190,7 @@
 				<!-- FEATURED PRODUCTS -->
 				<div class="tab-pane animated animation-done rollIn" data-animation="rollIn" id="feat">
 					@foreach(best_seller() as $key=>$myproduk)	
-						@if($key<4)	
+						@if($key < 4)	
 						<div class="col-xs-12 col-sm-6 col-lg-3 products-container">
 							<div class="product">
 								<a href="{{product_url($myproduk)}}" class="product-link clearfix">

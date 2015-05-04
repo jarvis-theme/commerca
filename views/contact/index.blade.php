@@ -26,7 +26,7 @@
 				<div class="col-xs-12 col-sm-6 center-sm">
 					<div class="breadcrumbs">
 						<ul class="unstyled">
-							<li><a href="{{URL::to('/')}}">Home</a></li>
+							<li><a href="{{url('/')}}">Home</a></li>
 							<li class="active">Kontak Kami</li>                                                            
 						</ul>
 					</div>
@@ -68,7 +68,7 @@
 										<i class="icon-phone"></i>
 									</div>
 									<div class="media-body">
-										<p>{{$kontak->telepon}}<br/>{{$kontak->hp}}</p>
+										<p>{{@$kontak->telepon}}<br/>{{@$kontak->hp}}</p>
 									</div>
 								</div>
 								<div class="media">
@@ -87,7 +87,7 @@
 					@foreach(horizontal_banner() as $key=>$banner)
 					<div class="section  module-list-items">
 						<div class="cat-image">
-							<a href="{{URL::to($banner->url)}}"><img src="{{banner_image_url($banner->gambar)}}" width="100%"/></a>                                    
+							<a href="{{url($banner->url)}}"><img src="{{banner_image_url($banner->gambar)}}" width="100%"/></a>                                    
 						</div>
 					</div>      
 					@endforeach
@@ -112,7 +112,7 @@
 								<h4 class="section-title">Tanya Kami</h4>
 								<div class="section-inner">												
 									<div class="space20"></div>
-									<form class="form-horizontal contact" action="{{URL::to('kontak')}}" method="post">
+									<form class="form-horizontal contact" action="{{url('kontak')}}" method="post">
 										<div class="form-group">
 											<div class="col-xs-12 col-sm-12 col-md-9">
 												<input required name="namaKontak" id="contactName" type="text" class="form-control" id="inputName" name="name"  placeholder="Nama">

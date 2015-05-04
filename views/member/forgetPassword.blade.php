@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="col-2">
                                         <h3>Lupa Password</h3>
-                                        <form class="form-horizontal" action="{{URL::to('member/forgetpassword')}}" method="post">
+                                        <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post">
                                             <fieldset>
                                                 <ul class="form-list">
                                                     <li>
@@ -62,13 +62,13 @@
                                 <div class="col2-set">
                                     <div class="col-1">
                                         <div class="buttons-set">
-                                            <button onClick="parent.location='{{URL::to('member/create')}}'" class="button brown_btn" type="button">Daftar</button>
+                                            <button onClick="parent.location='{{url('member/create')}}'" class="button brown_btn" type="button">Daftar</button>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="buttons-set">
-                                            <!-- <button onClick="parent.location='{{URL::to('member')}}'" class="button brown_btn" type="button">&larr; Login</button> -->
-                                            <a class="fl_right" href="{{URL::to('member/')}}">&larr; Login</a>
+                                            <!-- <button onClick="parent.location='{{url('member')}}'" class="button brown_btn" type="button">&larr; Login</button> -->
+                                            <a class="fl_right" href="{{url('member/')}}">&larr; Login</a>
                                             <button  class="button brown_btn" type="submit">Reset Password</button>
                                         </div>
                                     </div>

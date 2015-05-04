@@ -5,7 +5,7 @@
 			<div class="col-xs-12 col-sm-6 center-sm">
 				<div class="breadcrumbs">
 					<ul class="unstyled">
-						<li><a href="{{URL::to('/')}}">Home</a></li>
+						<li><a href="{{url('/')}}">Home</a></li>
 					</ul>
 				</div>
 			</div>
@@ -104,8 +104,8 @@
 						<div class="cat-image">
 						@foreach(horizontal_banner() as $key=>$banner)
 							@if($key==0)
-								<a href="{{URL::to($banner->url)}}">
-									{{HTML::image(banner_image_url($banner->gambar), '', array('width'=>'100%'))}}
+								<a href="{{url($banner->url)}}">
+									{{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'100%'))}}
 								</a>
 							@endif
 						@endforeach

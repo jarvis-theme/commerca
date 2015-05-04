@@ -5,7 +5,7 @@
             <div class="relative">
                 <a href="#" class="btn btn-iconed">
                     <i class="icon-cart3"></i>
-                    <span>{{Shpcart::wishlist()->total_items()}} Item(s) - {{ jadiRupiah(Shpcart::cart()->total() )}}</span>
+                    <span>{{Shpcart::wishlist()->total_items()}} Item(s) - {{ price(Shpcart::cart()->total() )}}</span>
                 </a>
                 
                 <!-- CART ITEMS -->
@@ -32,7 +32,7 @@
                            </tbody>
                         </table>
                     </div>
-                    <div class="footer"><a href="{{URL::to('checkout')}}">Checkout</a></div>
+                    <div class="footer"><a href="{{url('checkout')}}">Checkout</a></div>
                     @endif
                 </div>
                 <!-- /CART ITEMS -->                

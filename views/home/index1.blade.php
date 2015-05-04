@@ -10,7 +10,7 @@
 						{{pluginSidePowerup()}}
 						<li class="header">Banner</li>
 						@foreach(vertical_banner() as $banner)
-							<a target="_blank" href="{{URL::to($banner->url)}}">
+							<a target="_blank" href="{{url($banner->url)}}">
 								<img src="{{banner_image_url($banner->gambar)}}"/>
 							</a>
 						@endforeach
@@ -41,7 +41,7 @@
 							@endforeach
 							</ul>
 						</span>
-						<b style="float:right;"><a style="text-decoration: none" href="{{URL::to('testimoni')}}">Lainnya..</a></b>
+						<b style="float:right;"><a style="text-decoration: none" href="{{url('testimoni')}}">Lainnya..</a></b>
 					</ul>
 				</div>
 			</div>
@@ -65,8 +65,8 @@
 								{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('style' => 'max-height: 217px;'))}}
 							</a>
 							<div class="product_info">
-								<h3><a href="{{product_url($myproduk)}}">{{strtoupper(shortName($myproduk->nama,24))}}</a></h3>
-								<small>{{shortDescription($myproduk->deskripsi,80)}}</small>
+								<h3><a href="{{product_url($myproduk)}}">{{strtoupper(short_description($myproduk->nama,24))}}</a></h3>
+								<small>{{short_description($myproduk->deskripsi,80)}}</small>
 							</div>
 							@if($setting->checkoutType==1)
 							<div class="price_info">

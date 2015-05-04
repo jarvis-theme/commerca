@@ -1,37 +1,3 @@
-<!-- FOOTER ANNONCE -->
-<!-- <div id="footer-annonce" class="footer-annonce">
-	<div class="container">
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 annonce">
-			<div class="annonce-inner">
-				<div class="iconic icon-support"></div>
-				<h3>24/7 Support</h3>
-				<p>We support everything we sell</p>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 annonce">
-			<div class=" annonce-inner">
-				<div class="iconic icon-gift"></div>
-				<h3>Surprise Gift</h3>
-				<p>Value $50 on orders over $700</p>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 annonce">
-			<div class="annonce-inner">
-				<div class="iconic icon-headphones"></div>
-				<h3>24/7 Support</h3>
-				<p>We support everything we sell</p>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 annonce">
-			<div class=" annonce-inner">
-				<div class="iconic icon-truck"></div>
-				<h3>Free Shipping</h3>
-				<p>All over in world over $100</p>
-			</div>
-		</div>
-	</div>
-</div> -->
-<!-- /FOOTER ANNONCE -->
 <!-- SITE FOOTER -->
 <div id="footer-container" class="footer-container">
 	<div class="footer-inner alt">
@@ -53,7 +19,7 @@
 					<div class="widget">
 						<h4 class="widget-header">Posting Terbaru</h4>
 						<div class="widget-inner">
-							@foreach (list_blog(3) as $items)
+							@foreach (recentBlog(null,3) as $items)
 							<div class="media">
 								<a href="{{slugBlog($items)}}">{{$items->judul}}</a><br />
 								<small>— diposting pada {{waktuTgl($items->created_at)}}</small>
@@ -146,16 +112,16 @@
 									<li>
 										@if($link->halaman=='1')
 											@if($link->linkTo == 'halaman/about-us')
-											<a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
+											<a href='{{url(strtolower($link->linkTo))}}'>{{$link->nama}}</a>
 											@else
-											<a href={{"'".URL::to("halaman/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
+											<a href='{{url("halaman/".strtolower($link->linkTo))}}'>{{$link->nama}}</a>
 											@endif
 										@elseif($link->halaman=='2')
-											<a href={{"'".URL::to("blog/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
+											<a href='{{url("blog/".strtolower($link->linkTo))}}'>{{$link->nama}}</a>
 										@elseif($link->url=='1')
 											<a href="{{strtolower($link->linkTo)}}">{{$link->nama}}</a>
 										@else
-											<a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
+											<a href='{{url(strtolower($link->linkTo))}}'>{{$link->nama}}</a>
 										@endif
 									</li>                        
 								@endforeach
@@ -170,25 +136,24 @@
 					<div class="widget widget-subs">
 						<div class="widget-inner">
 							<div class="clearfix"></div>
-							<form class="frm-subs clearfix">
+							<form class="frm-subs clearfix" action="{{@$mailing->action}}" method="post" class="validate" target="_blank">
 								<label for="subscribe-input" class="subscribe-title">Subscribe to our newsletter : </label>
 								<div>
 									<input type="text" id="subscribe-input" class="subscribe-input" placeholder="Your email address" />
-									<button class="btn btn-primary button-sbsr" disabled="true">Submit</button>
+									<button class="btn btn-primary button-sbsr" {{ @$mailing->action==''?'disabled="disabled" style="opacity: 0.5; cursor: default;"':'' }}>Submit</button>
 								</div>
 							</form>
 							<ul class="card-icons">
 								@foreach($bank as $value)
-								<li><img style="" src="{{URL::to('img/'.$value->bankdefault->logo)}}" alt="" /></li>
+								<li><img style="" src="{{url('img/'.$value->bankdefault->logo)}}" alt="" /></li>
 								@endforeach
-								@if(list_payments()[0]->aktif == 1)
-								<li><img src="{{URL::to('img/bank/paypal.png')}}" alt="support paypal" /></li>
-								@endif
-								@if(list_payments()[2]->aktif == 1)
-								<li><img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="support ipaymu" /></li>
-								@endif
+								@foreach(list_payments() as $pay)
+                                    @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                    <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
+                                    @endif
+                                @endforeach
 								@if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-								<li><img src="{{URL::to('img/bank/doku.jpg')}}" alt="support doku myshortcart" /></li>
+								<li><img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" /></li>
 								@endif
 							</ul>
 						</div>

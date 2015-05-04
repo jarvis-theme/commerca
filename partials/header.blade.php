@@ -1,15 +1,13 @@
 <!-- SITE HEADER  -->
 <div id="header-container">
-    
     <!-- top header bar -->
     <div id="header-container-inner">
         <div class="container headtop">
-            
             <div class="row">
                 <!-- top header links -->
                 <div class="col-xs-12 col-sm-6 top-links center-sm">
                     <ul class="link-menu cl-effect-21">
-                        @if ( ! Sentry::check())
+                        @if ( !is_login() )
                             <li>{{HTML::link('member', 'Login')}}</li>
                             <li>{{HTML::link('member/create', 'Register')}}</li>
                             <li>{{HTML::link('produk', 'Produk')}}</li>
@@ -33,19 +31,19 @@
                 <div class="col-xs-12 col-sm-6 header-social-icons multicolor center-sm">
                     <ul>
                         @if($kontak->tw)
-                        <li><a target="_blank" href="{{URL::to($kontak->tw)}}" class="twitter"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->tw)}}" class="twitter"><br/></a></li>
                         @endif
                         @if($kontak->fb)
-                        <li><a target="_blank" href="{{URL::to($kontak->fb)}}" class="facebook"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->fb)}}" class="facebook"><br/></a></li>
                         @endif
                         @if($kontak->ig)
-                        <li><a target="_blank" href="{{URL::to($kontak->ig)}}" class="linkedin"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->ig)}}" class="linkedin"><br/></a></li>
                         @endif
                         <!-- <li><a href="#" class="rss"><br/></a></li>
                         <li><a href="#" class="skype"><br/></a></li>
                         <li><a href="#" class="deviantart"><br/></a></li> -->
                         @if($kontak->gp)
-                        <li><a target="_blank" href="{{URL::to($kontak->gp)}}" class="googleplus"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->gp)}}" class="googleplus"><br/></a></li>
                         @endif
                     </ul>
                 </div>
@@ -65,10 +63,12 @@
                 <!-- logo -->
                 <div class="col-xs-8 col-sm-8 logo-container">
                     <strong class="logo ">
-                    @if(@getimagesize(URL::to(getPrefixDomain().'/galeri/'.$toko->logo)))
-                        <a href="{{URL::to('home')}}"><img style="max-height: 100px;" src="{{URL::to(getPrefixDomain().'/galeri/'.$toko->logo)}}" /></a>
+                    @if(@getimagesize( url(logo_image_url()) ))
+                        <a href="{{url('home')}}">
+                            {{HTML::image(logo_image_url(),'logo',array('style'=>'max-height:100px'))}}
+                        </a>
                     @else
-                        <a style="text-decoration:none" href="{{URL::to('home')}}"><h1 style="padding: 16px 20px;color: #3D3B3B;text-shadow: 1.5px 1px 0px #A5A3A3;text-decoration: none;text-transform: uppercase;font-weight: bold;font-size: 36px;">{{ Theme::place('title') }}</h1></a>
+                        <a style="text-decoration:none" href="{{url('home')}}"><h1 style="padding: 16px 20px;color: #3D3B3B;text-shadow: 1.5px 1px 0px #A5A3A3;text-decoration: none;text-transform: uppercase;font-weight: bold;font-size: 36px;">{{ Theme::place('title') }}</h1></a>
                     @endif
                     </strong>
                 </div>
@@ -77,9 +77,7 @@
                 <!-- shopping cart -->
                 {{$ShoppingCart}}
                 <!-- /shopping cart -->
-                
             </div>
-        
         </div>
     </div>
     <!-- /main header -->
@@ -87,13 +85,10 @@
     <!-- Navigation menu -->
     <div id="menu-container">
         <div class="container">
-            
             <div class="inner">
-            
                 <!-- main menu -->
                 <ul class="main-menu menu visible-lg">
-                
-                    <li class="active"><a href={{"'".URL::to("/")."'"}}><i class="icon-home"></i></a></li>
+                    <li class="active"><a href={{"'".url("/")."'"}}><i class="icon-home"></i></a></li>
                     @foreach($katMenu as $key=>$menu)
                     <li>
                         @if($menu->parent=='0')
@@ -126,18 +121,16 @@
                         @endif
                     </li>
                     @endforeach
-
                 </ul>
                 <!-- /main menu -->
                 
                 <!-- mobile main menu -->
                 <div class="mobile-menu hidden-lg">
-                
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger"><i class="icon-menu2"></i></button>
                         <ul class="dl-menu">
                             <li class="active">
-                                <a href={{URL::to("/")}}><i class="icon-home"></i></a>
+                                <a href={{url("/")}}><i class="icon-home"></i></a>
                             </li>
                             @foreach($katMenu as $key=>$menu)
                             <li>
@@ -157,24 +150,20 @@
                         </ul>
                     </div>
                     <!-- /dl-menuwrapper -->
-                
                 </div>
                 <!-- /mobile main menu -->
                 
                 <!-- search box -->
                 <div class="search-cont">
-                    <form action="{{URL::to('search')}}" method="post">
+                    <form action="{{url('search')}}" method="post">
                         <input id="search" type="text" name="search" class="query" placeholder="Search here" />
                         <button class="btn-search"><i class="icon-search"></i></button>
                     </form>
                 </div>
                 <!-- /search box -->
-                
             </div>
-            
         </div>
     </div>
     <!-- /Navigation menu -->
-    
 </div>
 <!-- /SITE HEADER -->

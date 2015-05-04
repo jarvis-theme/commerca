@@ -23,7 +23,7 @@
 							<div class="col-xs-12 col-sm-6 center-sm">
 								<div class="breadcrumbs">
 									<ul class="unstyled">
-										<li><a href="{{URL::to('/')}}">Home</a></li>
+										<li><a href="{{url('/')}}">Home</a></li>
 										<li class="active">{{$nama}}</li>				
 									</ul>
 								</div>
@@ -54,7 +54,7 @@
 										@foreach(horizontal_banner() as $key=>$banner)
 										<div class="section">
 											<div class="cat-image">
-												<a href="{{URL::to($banner->url)}}">
+												<a href="{{url($banner->url)}}">
 													<img src="{{banner_image_url($banner->gambar)}}" width="100%"/>
 												</a>                                    
 											</div>
@@ -106,7 +106,7 @@
 												<h4 class="section-title">Buat Testimonial</h4>
 												<div class="section">
 													<!-- carousel wrapper -->
-													<form class="form-horizontal contact" action="{{URL::to('testimoni')}}" method="post">
+													<form class="form-horizontal contact" action="{{url('testimoni')}}" method="post">
 														<div class="form-group">
 															<div class="col-xs-12 col-sm-12 col-md-9">
 																<input name="nama" type="text" class="form-control" id="inputName" name="nama" required placeholder="Nama">

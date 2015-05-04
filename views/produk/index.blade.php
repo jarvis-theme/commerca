@@ -6,7 +6,7 @@
 			<div class="col-xs-12 col-sm-6 center-sm">
 				<div class="breadcrumbs">
 					<ul class="unstyled">
-						<li><a href="{{URL::to('/')}}">Home</a></li>
+						<li><a href="{{url('/')}}">Home</a></li>
 						{{$breadcrumb}}                   
 					</ul>
 				</div>
@@ -34,7 +34,7 @@
 					<h4 class="section-title">Kategori</h4>
 					@foreach(list_category() as $key=>$menu)
 						@if($menu->parent=='0')
-							<a class="menuitem submenuheader" href="#" >{{$menu->nama}}</a>
+							<a class="menuitem submenuheader" href="{{category_url($menu)}}" >{{$menu->nama}}</a>
 							@foreach(list_category() as $key=>$submenu)
 								@if($menu->id==$submenu->parent)
 								<div class="submenu">
@@ -108,8 +108,8 @@
 						<div class="cat-image">
 						@foreach(horizontal_banner() as $key=>$banner)
 							@if($key==0)
-							<a href="{{URL::to($banner->url)}}">
-								{{HTML::image(banner_image_url($banner->gambar), '', array('width'=>'100%'))}}
+							<a href="{{url($banner->url)}}">
+								{{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'100%'))}}
 							</a>
 							@endif
 						@endforeach
@@ -156,7 +156,8 @@
 			
 				<div id="product-list-container" class="section offer products-container portrait three-column" data-layout="grid">
 					<div class="row">
-						@foreach(list_product() as $myproduk)
+					@if(count( list_product(9,@$category)) > 0)
+						@foreach(list_product(9,@$category) as $myproduk)
 						<div class="mix col-xs-12 col-sm-6 col-lg-4">
 							<div class="product"  data-name="Demo Product1">
 								<a href="{{product_url($myproduk)}}" class="product-link clearfix">
@@ -224,7 +225,12 @@
 							</div>
 							<br>
 						</div>  
-						@endforeach                                    
+						@endforeach    
+					@else
+					<article style="font-style:italic; text-align:center;">
+                        Produk tidak ditemukan.
+                    </article><br><br>
+                    @endif
 					</div>
 				</div>
 				<!-- /PRODUCT AREA -->
@@ -233,14 +239,8 @@
 				<div class="pagination-container">
 					<div class="row">
 						<div class="col-xs-8 col-sm-8">
-							{{$produk->links()}}
+							{{list_product(9,@$category)->links()}}
 						</div>
-						<!-- <div class="col-xs-4 col-sm-4">
-							<ul class="direction-nav pagination-direction float-right">
-								<li><a href="#" class="btn btn-prev disabled"><span class="icon-arrow-left10"></span></a></li>
-								<li><a href="#" class="btn btn-next"><span class="icon-arrow-right9"></span></a></li>
-							</ul>
-						</div> -->
 					</div>
 				</div>
 				<!-- PAGINATION -->				

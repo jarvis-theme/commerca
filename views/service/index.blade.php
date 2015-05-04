@@ -7,7 +7,7 @@
 							<div class="col-xs-12 col-sm-6 center-sm">
 								<div class="breadcrumbs">
 									<ul class="unstyled">
-										<li><a href="{{URL::to('/')}}">Home</a></li>
+										<li><a href="{{url('/')}}">Home</a></li>
 										<li class="active">Syarat dan Ketentuan</li>															
 									</ul>
 								</div>
@@ -36,11 +36,11 @@
 									<h4 class="section-title">Halaman Lain</h4>
 									<div class="section-inner">
 										<ul class="unstyled pretty-list cl-effect-1">
-											<li><a href="{{URL::to('halaman/about-us')}}">Tentang Kami</a></li>
-											<li><a href="{{URL::to('testimoni')}}">Testimonial</a></li>
-											<li><a href="{{URL::to('service')}}">Syarat dan Ketentuan</a></li>
-											<li><a href="{{URL::to('produk')}}">List Produk</a></li>
-											<li><a href="{{URL::to('blog')}}">Blog</a></li>
+											<li><a href="{{url('halaman/about-us')}}">Tentang Kami</a></li>
+											<li><a href="{{url('testimoni')}}">Testimonial</a></li>
+											<li><a href="{{url('service')}}">Syarat dan Ketentuan</a></li>
+											<li><a href="{{url('produk')}}">List Produk</a></li>
+											<li><a href="{{url('blog')}}">Blog</a></li>
 										</ul>
 									</div>
 								</div>

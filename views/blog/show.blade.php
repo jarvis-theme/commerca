@@ -7,8 +7,8 @@
 				<div class="col-xs-12 col-sm-6 center-sm">
 					<div class="breadcrumbs">
 						<ul class="unstyled">
-							<li><a href="{{URL::to('/')}}">Home</a></li>
-							<li><a href="{{URL::to('blog')}}">Blog</a></li>
+							<li><a href="{{url('/')}}">Home</a></li>
+							<li><a href="{{url('blog')}}">Blog</a></li>
 							<li class="active">{{$detailblog->judul}}</li>												
 						</ul>
 					</div>
@@ -69,7 +69,7 @@
 							<div class="description">
 								<small style="margin:8px;">
 									<span><i class="icon-calendar4"></i>&nbsp;{{waktuTgl($detailblog->updated_at)}}</span>
-									<span>&nbsp;&nbsp; <i class="icon-tag"></i>&nbsp;<a href="{{URL::to('blog/category/'.$detailblog->kategori->nama)}}">{{$detailblog->kategori->nama}}</a></span>
+									<span>&nbsp;&nbsp; <i class="icon-tag"></i>&nbsp;<a href="{{url('blog/category/'.$detailblog->kategori->nama)}}">{{$detailblog->kategori->nama}}</a></span>
 								</small><br><br>               
 								{{$detailblog->isi}}
 							</div>

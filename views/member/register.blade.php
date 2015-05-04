@@ -25,7 +25,7 @@
 					<div class="col-xs-12 col-sm-6 center-sm">
 						<div class="breadcrumbs">
 							<ul class="unstyled">
-								<li><a href="{{URL::to('/')}}">Home</a></li>
+								<li><a href="{{url('/')}}">Home</a></li>
 								<li class="active">Register</li>																							
 							</ul>
 						</div>
@@ -55,9 +55,8 @@
 								@foreach(vertical_banner() as $key=>$banner)
 								<div class="section">
 									<div class="cat-image">
-										<a href="{{URL::to($banner->url)}}">
-											<!-- <img src="{{banner_image_url($banner->gambar)}}" width="100%"/> -->
-											{{HTML::image(banner_image_url($banner->gambar),'', array('width'=>'100%'))}}
+										<a href="{{url($banner->url)}}">
+											{{HTML::image(banner_image_url($banner->gambar),'banner', array('width'=>'100%'))}}
 										</a>
 									</div>
 								</div>      
@@ -71,7 +70,7 @@
 					<!-- MAIN CONTENT -->
 					<div class="col-xs-12 col-sm-8 col-lg-9 main">
 						<div class="section">
-							<p>If you already have an account with us, please login at the <a href="{{URL::to('member/login')}}">login page</a>.</p>
+							<p>If you already have an account with us, please login at the <a href="{{url('member/login')}}">login page</a>.</p>
 							{{Form::open(array('url'=>'member','method'=>'post','class'=>'form-horizontal'))}}
 								<h2>Your Personal Details</h2>
 								<div class="content">
@@ -147,7 +146,7 @@
 								</div>
 								
 								<div class="buttons">
-									<div class="right">I have read and agree to the <a class="colorbox cboxElement" href="{{URL::to('service')}}" alt="Privacy Policy" target="_blank"><b>Privacy Policy</b></a> <input type="checkbox" required name='readme' value="1">
+									<div class="right">I have read and agree to the <a class="colorbox cboxElement" href="{{url('service')}}" alt="Privacy Policy" target="_blank"><b>Privacy Policy</b></a> <input type="checkbox" required name='readme' value="1">
 									<input type="submit" value="Continue" class="button">
 									</div>
 								</div>

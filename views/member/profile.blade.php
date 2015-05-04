@@ -25,8 +25,8 @@
 				<div class="col-xs-12 col-sm-6 center-sm">
 					<div class="breadcrumbs">
 						<ul class="unstyled">
-							<li><a href="{{URL::to('/')}}">Home</a></li>
-							<li><a href="{{URL::to('member')}}">Member</a></li>
+							<li><a href="{{url('/')}}">Home</a></li>
+							<li><a href="{{url('member')}}">Member</a></li>
 							<li class="active">My Profile</li>				
 						</ul>
 					</div>
@@ -55,8 +55,8 @@
 						<h4 class="section-title">Menu Member</h4>
 						<div class="section-inner">
 							<ul class="unstyled pretty-list arrow-list cl-effect-1">
-								<li><a href="{{URL::to('member')}}">Order History</a></li>
-								<li><a href="{{URL::to('member/'.$user->id.'/edit')}}">Profil Information</a></li>
+								<li><a href="{{url('member')}}">Order History</a></li>
+								<li><a href="{{url('member/'.$user->id.'/edit')}}">Profil Information</a></li>
 							</ul>
 						</div>
 					</div>
@@ -93,9 +93,9 @@
 												<li>
 													<div class="product">
 														<div class="product-thumbnail">
-															<a href="{{URL::to($banner->url)}}">
+															<a href="{{url($banner->url)}}">
 																<!-- <img src="{{banner_image_url($banner->gambar)}}" width="100%"/> -->
-																{{HTML::image(banner_image_url($banner->gambar),'',array('width'=>'100%'))}}
+																{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'100%'))}}
 															</a>                                             
 														</div>
 													</div>
