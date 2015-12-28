@@ -3,4 +3,4 @@
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 <!-- <script>window.jQuery || document.write(""<script src="http://example.jarvis-store.test/themes/7-tema/commerca/assets/js/jquery.min.js");</script> -->
 
-<script data-main="http://{{Request::server('SERVER_NAME').'/'.dirTemaToko()}}commerca/assets/js/app-main" src="/js/require.js"></script>
+<script data-main="{{url(dirTemaToko().'commerca/assets/js/app-main')}}" src="{{url('js/require.js')}}"></script> 

@@ -15,12 +15,9 @@
             <div id="site-wrapper">
                 {{ Theme::partial('slider') }}
                 {{ Theme::place('content') }}
-                {{ Theme::partial('subscribe') }}
             </div>
             {{ Theme::partial('footer') }}
             {{ Theme::partial('defaultjs') }}
-            {{-- Theme::asset()->scripts() --}}
-            {{-- Theme::asset()->container('footer')->scripts() --}}
         </div>
         {{ Theme::partial('analytic') }}
     </body>

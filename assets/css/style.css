@@ -1206,7 +1206,8 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 			color: #979797;
 		}
 		.dl-menuwrapper button.dl-active > i:before {
-			content: "\f00d";
+			/*content: "\f00d";*/
+			content: "\e6bd";
 		}
 
 		.dl-menuwrapper ul {
@@ -1256,7 +1257,8 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 			font-family: 'icomoon';
 			speak: none;
 			-webkit-font-smoothing: antialiased;
-			content: "\e01b";
+			/*content: "\e01b";*/
+			content: "\e70f";
 		}
 
 		.dl-menuwrapper li.dl-back:after {
@@ -4292,6 +4294,18 @@ body, h1, h2, h3, h4, h5, h6, input, select, textarea, .form-control, button {
 .products-container .product:before,.products-container .product:after ,.footer-inner.alt:before, .footer-inner.alt:after,.footer-inner.main:before,.footer-inner.main:after,
 .breadcrumbs-wrapper .container:before,.breadcrumbs-wrapper .container:after,.btn.btn-iconed > i, .category-page .description:before,.category-page .description:after,.category-page .desc-out:before,.category-page .desc-out:after,
 .productpage-info .description .prices,.productpage-info .description .prices:before,.productpage-info .description .prices:after{		background-color: #FEAA37; 		}
-.annonce:hover{		background-color: #FEAA37 !important; 		}
- .products-container .product .ribbon{  border-top-color:#FEAA37; border-right-color:#FEAA37;  }
-.pagination .links b{  border-bottom-color:#FEAA37; }
+.annonce:hover{	background-color: #FEAA37 !important; }
+.products-container .product .ribbon{  border-top-color:#FEAA37; border-right-color:#FEAA37; }
+.pagination .links b{  border-bottom-color:#FEAA37; }.noresult{font-style:italic; text-align:center}
+.dateblog{margin-left: 15px}.blogtitle{margin: 0}.timeblog{margin:8px}.recentblog{margin-left: 20px}#navblog{margin-top:0}
+#norek{width: 40% !important}.banks{width: 100%}.right{text-align: right}.maplocation{float:right;width:100%}
+.collection{width: 200px}.new-homeproduct{height: 257px}
+.badge-hot{background-color: #d9534f; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
+.badge-new{background-color: #5bc0de; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
+.badge-empty{background-color: #999; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
+.sidebar{border-bottom: solid 1px;border-bottom-color: #f38256; border-top: 0px}.side-contact{line-height: 2}.nodecor{text-decoration: none}
+.relative{position: relative}.table-responsive{overflow-x: auto}.input-profil{width:80%}
+.breadcrumbs span:last-child{display: none}.captcha{width:20%}.autowidth{width: auto !important}.btn-iconed{padding: 15px 20px !important}
+.sosmed{margin: 20px 0px; border-top: 1px solid #EEE; padding: 20px 0px}
+.logotext{padding: 16px 20px;color: #3D3B3B;text-shadow: 1.5px 1px 0px #A5A3A3;text-decoration: none;text-transform: uppercase;font-weight: bold;font-size: 36px}
+.img-prod{min-height: 220px; min-width: 257px}.center{text-align: center}

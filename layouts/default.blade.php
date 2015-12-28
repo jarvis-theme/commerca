@@ -15,13 +15,11 @@
             <!--Mid Section Starts-->
             <section>
                 {{ Theme::place('content') }}
-                {{ Theme::partial('subscribe') }}
+                {{-- Theme::partial('subscribe') --}}
             </section>
         </div>
         {{ Theme::partial('footer') }}
         {{ Theme::partial('defaultjs') }}
-        {{-- Theme::asset()->scripts() --}}
-        {{-- Theme::asset()->container('footer')->scripts() --}}
         {{ Theme::partial('analytic') }}
     </body>
 </html>

@@ -37,7 +37,7 @@
                         <li><a target="_blank" href="{{url($kontak->fb)}}" class="facebook"><br/></a></li>
                         @endif
                         @if($kontak->ig)
-                        <li><a target="_blank" href="{{url($kontak->ig)}}" class="linkedin"><br/></a></li>
+                        <!-- <li><a target="_blank" href="{{url($kontak->ig)}}" class="linkedin"><br/></a></li> -->
                         @endif
                         <!-- <li><a href="#" class="rss"><br/></a></li>
                         <li><a href="#" class="skype"><br/></a></li>
@@ -49,7 +49,6 @@
                 </div>
                 <!-- /social icons -->
             </div>
-        
         </div>
     </div>
     <!-- /top header bar -->
@@ -57,25 +56,23 @@
     <!-- main header -->
     <div id="header-center">
         <div class="container">
-            
             <div class="row">
-            
                 <!-- logo -->
                 <div class="col-xs-8 col-sm-8 logo-container">
                     <strong class="logo ">
                     @if(@getimagesize( url(logo_image_url()) ))
                         <a href="{{url('home')}}">
-                            {{HTML::image(logo_image_url(),'logo',array('style'=>'max-height:100px'))}}
+                            {{HTML::image(logo_image_url(),'logo '.Theme::place('title'),array('style'=>'max-height:100px'))}}
                         </a>
                     @else
-                        <a style="text-decoration:none" href="{{url('home')}}"><h1 style="padding: 16px 20px;color: #3D3B3B;text-shadow: 1.5px 1px 0px #A5A3A3;text-decoration: none;text-transform: uppercase;font-weight: bold;font-size: 36px;">{{ Theme::place('title') }}</h1></a>
+                        <a class="nodecor" href="{{url('home')}}"><h1 class="logotext">{{ Theme::place('title') }}</h1></a>
                     @endif
                     </strong>
                 </div>
                 <!-- /logo -->
                 
                 <!-- shopping cart -->
-                {{$ShoppingCart}}
+                <div id="shoppingcartplace">{{ shopping_cart() }}</div>
                 <!-- /shopping cart -->
             </div>
         </div>
@@ -88,38 +85,31 @@
             <div class="inner">
                 <!-- main menu -->
                 <ul class="main-menu menu visible-lg">
-                    <li class="active"><a href={{"'".url("/")."'"}}><i class="icon-home"></i></a></li>
-                    @foreach($katMenu as $key=>$menu)
+                    <li class="active"><a href="{{url('/')}}"><i class="icon-home"></i></a></li>
+                    @foreach(category_menu() as $key=>$menu)
+                    @if($menu->parent=='0')
                     <li>
-                        @if($menu->parent=='0')
-                        <a href={{slugKategori($menu)}}>{{$menu->nama}}</a>
-                            @foreach($anMenu as $key3=>$bug)
-                            @if($bug->parent==$menu->id)
-                            <ul class="sub_menu">
-                                <!--SUbmenu Starts-->
-                                @foreach($anMenu as $key1=>$submenu)
-                                    @if($submenu->parent==$menu->id)
-                                    <li><a href={{slugKategori($submenu)}}>{{$submenu->nama}}</a>
-                                        @foreach($anMenu as $key3=>$bug2)
-                                        @if($bug2->parent==$submenu->id)
-                                        <ul>
-                                            @foreach($anMenu as $key2=>$submenu2)
-                                                @if($submenu->id==$submenu2->parent)
-                                                <li><a href={{slugKategori($submenu2)}}>{{$submenu2->nama}}</a></li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                        @endif
-                                        @endforeach
-                                    </li>
+                        <a href="{{category_url($menu)}}">{{$menu->nama}}</a>
+                        @if($menu->anak->count() > 0)
+                        <ul class="sub_menu">
+                        @foreach($menu->anak as $submenu)
+                            @if($submenu->parent == $menu->id)
+                                <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
+                                @if($submenu->anak->count() > 0)
+                                <ul>
+                                    @foreach($submenu->anak as $submenu2)
+                                    @if($submenu2->parent == $submenu->id)
+                                    <li><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
                                     @endif
-                                @endforeach
-                            </ul>
+                                    @endforeach
+                                </ul>
+                                @endif
                             @endif
-                            @endforeach
-                        <!--SUbmenu Ends-->
+                        @endforeach
+                        </ul>
                         @endif
                     </li>
+                    @endif
                     @endforeach
                 </ul>
                 <!-- /main menu -->
@@ -130,26 +120,39 @@
                         <button class="dl-trigger"><i class="icon-menu2"></i></button>
                         <ul class="dl-menu">
                             <li class="active">
-                                <a href={{url("/")}}><i class="icon-home"></i></a>
+                                <a href="{{url('/')}}"><i class="icon-home"></i></a>
                             </li>
-                            @foreach($katMenu as $key=>$menu)
+                            @foreach(list_category() as $key=>$menu)
+                            @if($menu->parent == '0')
                             <li>
-                                <?php $numItems = count($anMenu);$i = 0; ?>
+                                @if(count($menu->anak) > 0)
                                 <a href="javsacript:void(0);">{{$menu->nama}}</a>
                                 <ul class="dl-submenu">
-                                    @foreach($anMenu as $key1=>$submenu)
-                                        @if($submenu->parent==$menu->id)
-                                            <li><a href="{{slugKategori($submenu2)}}">{{$submenu->nama}}</a></li>
-                                        @elseif(++$i === $numItems)
-                                            <li><a href="{{slugKategori($menu)}}">{{$menu->nama}}</a></li>
+                                    @foreach($menu->anak as $submenu)
+                                        @if($submenu->parent == $menu->id)
+                                        <li>
+                                            <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                            @if(count($submenu->anak) > 0)
+                                            <ul>
+                                                @foreach($submenu->anak as $submenu2)
+                                                @if($submenu2->parent == $submenu->id)
+                                                <li><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
+                                                @endif
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                        </li>
                                         @endif
                                     @endforeach
                                 </ul>
+                                @else
+                                <a href="{{category_url($menu)}}">{{$menu->nama}}</a>
+                                @endif
                             </li>
+                            @endif
                             @endforeach
                         </ul>
                     </div>
-                    <!-- /dl-menuwrapper -->
                 </div>
                 <!-- /mobile main menu -->
                 
@@ -160,7 +163,6 @@
                         <button class="btn-search"><i class="icon-search"></i></button>
                     </form>
                 </div>
-                <!-- /search box -->
             </div>
         </div>
     </div>

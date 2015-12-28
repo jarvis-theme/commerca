@@ -8,9 +8,9 @@
 <!-- CSS styles  -->
 {{generate_theme_css('commerca/assets/css/bootstrap.min.css')}}
 @if($tema->isiCss=='')
-	{{generate_theme_css('commerca/assets/css/style.css')}}
+    {{generate_theme_css('commerca/assets/css/style.css')}}
 @else
-	{{generate_theme_css('commerca/assets/css/editstyle.css')}}
+    {{generate_theme_css('commerca/assets/css/editstyle.css')}}
 @endif
 {{generate_theme_css('commerca/assets/css/responsive.css')}}
 {{generate_theme_css('commerca/assets/css/animate.css')}}
@@ -20,4 +20,4 @@
 {{generate_theme_css('commerca/assets/css/flexslider/default.css')}}
 
 <!-- Other -->
-{{createFavicon($toko)}}
+{{favicon()}}
