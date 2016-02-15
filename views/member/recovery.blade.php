@@ -33,7 +33,7 @@
                 <div class="section  module-list-items">
                     <div class="cat-image">
                         <a href="{{url($banner->url)}}">
-                            <img src="{{banner_image_url($banner->gambar)}}" width="100%" alt="Info Promo" />
+                            <img src="{{banner_image_url($banner->gambar)}}" alt="Info Promo" />
                         </a>
                     </div>
                 </div>
@@ -45,20 +45,20 @@
             <!-- MAIN CONTENT -->
             <div class="col-xs-12 col-sm-8 col-lg-9 main">
                 <div class="section">
-                    {{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, ))}}
+                    {{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code))}}
                         <p>Silahkan masukkan password baru yang kamu inginkan dengan melengkapi form di bawah ini.</p>
                         <h2>Forget Password</h2>
                         <div class="content">
                             <table class="form">
                                 <tbody>
                                     <tr>
-                                        <td>Password baru:</td>
+                                        <td>Password Baru:</td>
                                         <td>
                                             <input type="password" name="password" id="inputPassword" placeholder="password baru" required>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Konfirmasi Password:</td>
+                                        <td>Ulangi Password Baru:</td>
                                         <td>
                                             <input type="password" name="password_confirmation" id="inputPassword" placeholder="konfirmasi password baru" required>
                                         </td>

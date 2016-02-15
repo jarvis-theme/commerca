@@ -31,6 +31,7 @@
                 <div class="row">
                     <!-- SIDE BAR -->
                     <div class="col-xs-12 col-sm-4 col-lg-3 pull-left sidebar">
+                        @if(list_category()->count() > 0)
                         <!-- CATEGORIES LIST -->
                         <div class="accordionmenu section">
                             <h4 class="section-title">Kategori</h4>
@@ -46,7 +47,7 @@
                                                 <ul>
                                                     @foreach($submenu->anak as $submenu2)
                                                     @if($submenu2->parent == $submenu->id)
-                                                    <li><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
+                                                    <li class="submenu2"><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
                                                     @endif
                                                     @endforeach
                                                 </ul>
@@ -59,6 +60,8 @@
                             @endforeach
                         </div>
                         <!-- /CATEGORIES LIST -->
+                        @endif
+                        @if(list_koleksi()->count() > 0)
                         <!-- carousel wrapper -->
                         <div class="section carousel-iframe">
                             <div class="container">
@@ -107,17 +110,20 @@
                             </div>
                         </div>
                         <!-- /CAROUSEL WRAPPER -->
-                        
+                        @endif
+                        <div class="powerup">
+                            {{pluginSidePowerup()}}
+                        </div>
                         <!-- BANNER MODULE -->
                         <div class="accordionmenu section">
-                        <!-- <h4 class="section-title">BANNER</h4> -->
-                        @foreach(vertical_banner() as $key=>$banner)
-                        <div class="section banner-show">
-                            <a href="{{url($banner->url)}}">
-                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
-                            </a>
-                        </div>
-                        @endforeach
+                            <!-- <h4 class="section-title">BANNER</h4> -->
+                            @foreach(vertical_banner() as $key=>$banner)
+                            <div class="section banner-show">
+                                <a href="{{url($banner->url)}}">
+                                    {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
+                                </a>
+                            </div>
+                            @endforeach
                         </div>
                         <!-- /BANNER MODULE -->
                     </div>
@@ -221,7 +227,7 @@
                                                     <div class="space30 clearfix"></div>
                                                     <div class="qty-btngroup clearfix">
                                                         <button type="button" class="minus">-</button>
-                                                            <input type="text" class="qty" name='qty' value="1" size="2" id="qty-input">
+                                                            <input type="text" class="qty" name="qty" value="1" size="2" id="qty-input">
                                                         <button type="button" class="plus">+</button>
                                                     </div>
                                                     <div class="space30 clearfix"></div>
@@ -246,7 +252,7 @@
                         <!-- /SINGLE PRODUCT DETAILS -->
                         <div class="bs-example bs-example-tabs">
                             <ul id="myTab" class="nav nav-tabs">
-                                <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
+                                <li class="active"><a href="#desc" data-toggle="tab">Deskripsi</a></li>
                                 <li><a href="#review" data-toggle="tab">Review</a></li>
                                 <li><a href="#comment" data-toggle="tab">Comment</a></li>
                             </ul>
@@ -269,7 +275,7 @@
                             <div class="container">
                                 <div class="row carousel-iframe offer">
                                     <div class="col-xs-12 col-sm-12">
-                                        <h4 class="section-title">RELATED PRODUCTS</h4>
+                                        <h4 class="section-title">Produk Lainnya</h4>
                                         <div class="section-inner">
                                             <!-- carousel control nav direction -->
                                             <div class="carousel-direction-arrows">
@@ -303,7 +309,7 @@
                                                                 <div class="ribbon special badge-empty">Kosong</div>
                                                                 @endif 
                                                                 <div class="product-thumbnail">
-                                                                    {{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('style' => 'height:220px'))}}
+                                                                    {{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('class' => 'otherpro'))}}
                                                                 </div>
                                                             </a>
                                                             <div class="button-add">
@@ -314,7 +320,7 @@
                                                             
                                                             <div class="product-info clearfix">
                                                                 <h4 class="title">
-                                                                    <a>{{ $myproduk->nama }}</a>
+                                                                    <a>{{ short_description($myproduk->nama,20) }}</a>
                                                                 </h4>
                                                                 @if($setting->checkoutType!=2)  
                                                                 <div class="details">

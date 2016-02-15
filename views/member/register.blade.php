@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
-                        
+
                 <div class="col-xs-12 col-sm-6 center-sm">
                     <div class="display-mode">
                         <ul class="unstyled float-right"> Register </ul>
@@ -37,7 +37,7 @@
                             <div class="section">
                                 <div class="cat-image">
                                     <a href="{{url($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar),'Info Promo', array('width'=>'100%'))}}
+                                        {{HTML::image(banner_image_url($banner->gambar),'Info Promo')}}
                                     </a>
                                 </div>
                             </div>
@@ -50,28 +50,28 @@
                 <!-- MAIN CONTENT -->
                 <div class="col-xs-12 col-sm-8 col-lg-9 main">
                     <div class="section">
-                        <p>If you already have an account with us, please login at the <a href="{{url('member/login')}}">login page</a>.</p>
+                        <p>Sudah punya akun {{Theme::place('title')}}? Masuk <a class="link" href="{{url('member/login')}}">di sini</a></p>
                         {{Form::open(array('url'=>'member','method'=>'post','class'=>'form-horizontal'))}}
-                            <h2>Your Personal Details</h2>
+                            <h2>Informasi Umum</h2>
                             <div class="content">
                                 <table class="form">
                                     <tbody>
                                         <tr>
-                                            <td><span class="required">*</span> Nama:</td>
+                                            <td><span class="required">*</span> Nama Lengkap:</td>
                                             <td><input class="input-profil" type="text" name="nama" value="{{Input::old('nama')}}" required></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> E-Mail:</td>
+                                            <td><span class="required">*</span> Email:</td>
                                             <td><input class="input-profil" type="text" name="email" value="{{Input::old('email')}}" required></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Telephone:</td>
+                                            <td><span class="required">*</span> No Telepon:</td>
                                             <td><input class="input-profil" type="text" name="telp" value="{{Input::old('telp')}}" required></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <h2>Your Address</h2>
+                            <h2>Informasi Alamat</h2>
                             <div class="content">
                                 <table class="form">
                                     <tbody>
@@ -90,21 +90,21 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Provisi:</td>
+                                            <td><span class="required">*</span> Provinsi:</td>
                                             <td>
-                                                {{Form::select('provinsi',array('' => '-- Pilih Provinsi --')  + $provinsi, Input::old("provinsi"),array('required', 'name'=>"provinsi", 'id'=>"provinsi", 'data-rel'=>"chosen"))}}
+                                                {{Form::select('provinsi',array('' => '-- Pilih Provinsi --') + $provinsi, Input::old("provinsi"),array('required', 'name'=>"provinsi", 'id'=>"provinsi", 'data-rel'=>"chosen"))}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Kabupaten:</td>
+                                            <td><span class="required">*</span> Kota:</td>
                                             <td>
-                                                {{Form::select('kota',array('' => '-- Pilih Kota --')  + $kota, Input::old("kota"),array('required', 'name'=>"kota", 'id'=>"kota", 'data-rel'=>"chosen"))}}
+                                                {{Form::select('kota',array('' => '-- Pilih Kota --') + $kota, Input::old("kota"),array('required', 'name'=>"kota", 'id'=>"kota", 'data-rel'=>"chosen"))}}
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <h2>Your Password</h2>
+                            <h2>Informasi Password</h2>
                             <div class="content">
                                 <table class="form">
                                     <tbody>
@@ -113,12 +113,12 @@
                                             <td><input type="password" name="password" required></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Password Confirm:</td>
+                                            <td><span class="required">*</span> Ulangi Password:</td>
                                             <td><input type="password" name="password_confirmation" required></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Captcha:</td>
-                                            <td class="captcha">{{ HTML::image(Captcha::img(), 'Captcha image') }}<input type="text" name="captcha" placeholder="Masukan text berikut" required ></td>
+                                            <td><span class="required">*</span> Kode Captcha:</td>
+                                            <td class="captcha">{{ HTML::image(Captcha::img(), 'Captcha image') }}<input type="text" name="captcha" placeholder="Masukan kode berikut" required ></td>
                                             <td></td>
                                         </tr>
                                     </tbody>
@@ -131,13 +131,13 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <input type="checkbox" name="readme" value="1" required> I have read and agree to the <a class="colorbox cboxElement" href="{{url('service')}}" alt="Privacy Policy" target="_blank"><b>Privacy Policy</b></a>
+                                                <input type="checkbox" name="readme" value="1" required checked> Saya telah membaca dan menyetujui <a class="colorbox cboxElement" href="{{url('service')}}" alt="Privacy Policy" target="_blank"><b>Syarat dan Ketentuan</b></a> di {{Theme::place('title')}}.
                                             </td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <input type="submit" value="Continue" class="button">
+                                                <input type="submit" value="Daftar" class="button">
                                             </td>
                                         </tr>
                                     </tbody>

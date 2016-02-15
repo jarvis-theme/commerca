@@ -18,7 +18,7 @@
                 
                 <div class="col-xs-12 col-sm-6 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> Details Profile </ul>
+                        <ul class="unstyled float-right"> Detail Profil </ul>
                     </div>
                 </div>
             </div>
@@ -43,16 +43,16 @@
                         </div>
                     </div>
                     <!-- /CHOOSE COLOR -->
-                                
+
                     <!-- Latest products -->
                     <div class="section carousel-iframe">
                         <div class="container">
                             <div class="row carousel-iframe offer">
                                 <div class="col-xs-12 col-sm-12">
-                                    <h4 class="section-title">Banner</h4>
+                                    <h4 class="section-title">Promo</h4>
                                     <div class="section-inner">
                                         <!-- carousel control nav direction -->
-                                        <!-- <div class="carousel-direction-arrows">
+                                        <div class="carousel-direction-arrows">
                                             <ul class="direction-nav carousel-direction">
                                                 <li>
                                                     <a class="crsl-prev btn" href="#">
@@ -65,7 +65,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div> -->
+                                        </div>
                                         <!-- /carousel control nav direction -->
                                         
                                         <!-- carousel wrapper -->
@@ -76,7 +76,7 @@
                                                     <div class="product">
                                                         <div class="product-thumbnail">
                                                             <a href="{{url($banner->url)}}">
-                                                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
+                                                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo')}}
                                                             </a>
                                                         </div>
                                                     </div>
@@ -98,7 +98,7 @@
                 <div class="col-xs-12 col-sm-8 col-lg-9 main">
                     <div class="section">
                         {{Form::open(array('url'=>'member/update','method'=>'put','class'=>'form-horizontal'))}}
-                            <h2>Your Personal Details</h2>
+                            <h2>Informasi Umum</h2>
                             <div class="content">
                                 <table class="form">
                                     <tbody>
@@ -107,17 +107,17 @@
                                             <td><input class="input-profil" type="text" name="nama" value="{{$user->nama}}" required></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> E-Mail:</td>
+                                            <td><span class="required">*</span> Email:</td>
                                             <td><input class="input-profil" type="text" name="email" value="{{$user->email}}" required></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Telephone:</td>
+                                            <td><span class="required">*</span> Telepon:</td>
                                             <td><input class="input-profil" type="text" name="telp" value="{{$user->telp}}" required></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <h2>Your Address</h2>
+                            <h2>Informasi Alamat</h2>
                             <div class="content">
                                 <table class="form">
                                     <tbody>
@@ -136,13 +136,13 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Provisi:</td>
+                                            <td><span class="required">*</span> Provinsi:</td>
                                             <td>
                                                 {{Form::select('provinsi',array('' => '-- Pilih Provinsi --') + $provinsi, ($user ? $user->provinsi :(Input::old("provinsi")? Input::old("provinsi") :"")),array('required'=>'','id'=>'provinsi'))}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Kabupaten:</td>
+                                            <td><span class="required">*</span> Kota:</td>
                                             <td>
                                                 {{Form::select('kota',array('' => '-- Pilih Kota --') + $kota, ($user ? $user->kota :(Input::old("kota")? Input::old("kota") :"")),array('required'=>'','id'=>'kota'))}}
                                             </td>
@@ -163,7 +163,7 @@
                                             <td><input type="password" name="password" ></td>
                                         </tr>
                                         <tr>
-                                            <td><span class="required">*</span> Confirm Password Baru:</td>
+                                            <td><span class="required">*</span> Ulangi Password Baru:</td>
                                             <td><input type="password" name="password_confirmation" ></td>
                                         </tr>
                                     </tbody>

@@ -46,10 +46,10 @@
                     <div class="container">
                         <div class="row carousel-iframe offer">
                             <div class="col-xs-12 col-sm-12">
-                                <h4 class="section-title">Banner</h4>
+                                <h4 class="section-title">Promo</h4>
                                 <div class="section-inner">
                                     <!-- carousel control nav direction -->
-                                    <!-- <div class="carousel-direction-arrows">
+                                    <div class="carousel-direction-arrows">
                                         <ul class="direction-nav carousel-direction">
                                             <li>
                                                 <a class="crsl-prev btn" href="#">
@@ -62,7 +62,7 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div> -->
+                                    </div>
                                     <!-- /carousel control nav direction -->
                                     
                                     <!-- carousel wrapper -->
@@ -73,7 +73,7 @@
                                                 <div class="product">
                                                     <div class="product-thumbnail">
                                                         <a href="{{ url($banner->url) }}">
-                                                            {{ HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%')) }}
+                                                            {{ HTML::image(banner_image_url($banner->gambar),'Info Promo') }}
                                                         </a>
                                                     </div>
                                                 </div>

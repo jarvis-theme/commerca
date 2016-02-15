@@ -2248,6 +2248,7 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 .section {
 	margin-top: 40px;
 }
+.section-inner > .section:first-child{margin-top: 0}
 .section:last-child {
 	margin-bottom: 20px;
 }
@@ -4297,15 +4298,21 @@ body, h1, h2, h3, h4, h5, h6, input, select, textarea, .form-control, button {
 .annonce:hover{	background-color: #FEAA37 !important; }
 .products-container .product .ribbon{  border-top-color:#FEAA37; border-right-color:#FEAA37; }
 .pagination .links b{  border-bottom-color:#FEAA37; }.noresult{font-style:italic; text-align:center}
-.dateblog{margin-left: 15px}.blogtitle{margin: 0}.timeblog{margin:8px}.recentblog{margin-left: 20px}#navblog{margin-top:0}
+.dateblog{margin-left: 15px}.blogtitle{margin: 0}.timeblog{margin:8px}.recentblog{margin-left: 15px}#navblog{margin-top:0}
 #norek{width: 40% !important}.banks{width: 100%}.right{text-align: right}.maplocation{float:right;width:100%}
 .collection{width: 200px}.new-homeproduct{height: 257px}
 .badge-hot{background-color: #d9534f; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
 .badge-new{background-color: #5bc0de; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
 .badge-empty{background-color: #999; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
-.sidebar{border-bottom: solid 1px;border-bottom-color: #f38256; border-top: 0px}.side-contact{line-height: 2}.nodecor{text-decoration: none}
+/*.sidebar{border-bottom: solid 1px;border-bottom-color: #f38256; border-top: 0px}*/
+.side-contact{line-height: 2}.nodecor{text-decoration: none}
 .relative{position: relative}.table-responsive{overflow-x: auto}.input-profil{width:80%}
 .breadcrumbs span:last-child{display: none}.captcha{width:20%}.autowidth{width: auto !important}.btn-iconed{padding: 15px 20px !important}
-.sosmed{margin: 20px 0px; border-top: 1px solid #EEE; padding: 20px 0px}
-.logotext{padding: 16px 20px;color: #3D3B3B;text-shadow: 1.5px 1px 0px #A5A3A3;text-decoration: none;text-transform: uppercase;font-weight: bold;font-size: 36px}
-.img-prod{min-height: 220px; min-width: 257px}.center{text-align: center}
+.sosmed{margin: 20px 0px; border-top: 1px solid #eee; padding: 20px 0px}
+.logotext{padding: 16px 20px;color: #3d3b3b;text-shadow: 1.5px 1px 0px #A5A3A3;text-decoration: none;text-transform: uppercase;font-weight: bold;font-size: 36px}
+.img-prod{min-height: 220px; min-width: 257px}.center{text-align: center}.imgpro{max-height: 217px;}
+.product-thumbnail a img, .cat-image a img{width: 100%} .link{color: #feaa37; text-decoration: underline;}
+.section > .banner-show:first-child{margin-top: 10px}.otherpro{height:220px}.submenu2{margin-left: 15px !important}
+.powerup form{text-align: left !important;}
+.powerup form input[type="submit"]{background-color: #feaa37; border: transparent; padding: 7px; margin-top: 5px}
+.powerup form input[type="submit"]:hover{background-color: #333; color: #fff}

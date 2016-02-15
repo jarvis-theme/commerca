@@ -3,10 +3,10 @@
     <head>
         <title>{{ Theme::place('title') }}</title>
         <meta charset="utf-8">
-        {{ Theme::partial('seostuff') }}    
+        {{ Theme::partial('seostuff') }}  
         {{ Theme::partial('defaultcss') }}  
         <!--Google Webfont -->
-        <link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
         {{ Theme::asset()->styles() }}  
     </head>
     <body>

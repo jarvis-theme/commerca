@@ -32,7 +32,7 @@
                     <div class="section  module-list-items">
                         <div class="cat-image">
                             <a href="{{ url($banner->url) }}">
-                                <img src="{{ url(banner_image_url($banner->gambar)) }}" width="100%" alt="Info Promo" />
+                                <img src="{{ url(banner_image_url($banner->gambar)) }}" alt="Info Promo" />
                             </a>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                 <table class="form">
                                     <tbody>
                                         <tr>
-                                            <td>E-Mail:</td>
+                                            <td>Email:</td>
                                             <td>
                                                 <input class="input-profil" id="email" type="text" name="recoveryEmail" required />
                                             </td>

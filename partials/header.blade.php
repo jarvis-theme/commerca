@@ -31,19 +31,19 @@
                 <div class="col-xs-12 col-sm-6 header-social-icons multicolor center-sm">
                     <ul>
                         @if($kontak->tw)
-                        <li><a target="_blank" href="{{url($kontak->tw)}}" class="twitter"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->tw)}}" class="twitter" title="Twitter"><br/></a></li>
                         @endif
                         @if($kontak->fb)
-                        <li><a target="_blank" href="{{url($kontak->fb)}}" class="facebook"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->fb)}}" class="facebook" title="Facebook"><br/></a></li>
                         @endif
                         @if($kontak->ig)
-                        <!-- <li><a target="_blank" href="{{url($kontak->ig)}}" class="linkedin"><br/></a></li> -->
+                        <!-- <li><a target="_blank" href="{{url($kontak->ig)}}" class="linkedin" title="Instagram"><br/></a></li> -->
                         @endif
                         <!-- <li><a href="#" class="rss"><br/></a></li>
                         <li><a href="#" class="skype"><br/></a></li>
                         <li><a href="#" class="deviantart"><br/></a></li> -->
                         @if($kontak->gp)
-                        <li><a target="_blank" href="{{url($kontak->gp)}}" class="googleplus"><br/></a></li>
+                        <li><a target="_blank" href="{{url($kontak->gp)}}" class="googleplus" title="Google+"><br/></a></li>
                         @endif
                     </ul>
                 </div>
@@ -59,8 +59,8 @@
             <div class="row">
                 <!-- logo -->
                 <div class="col-xs-8 col-sm-8 logo-container">
-                    <strong class="logo ">
-                    @if(@getimagesize( url(logo_image_url()) ))
+                    <strong class="logo">
+                    @if( logo_image_url() )
                         <a href="{{url('home')}}">
                             {{HTML::image(logo_image_url(),'logo '.Theme::place('title'),array('style'=>'max-height:100px'))}}
                         </a>

@@ -70,7 +70,7 @@
                                         {{Form::open(array('url' => $konfirmasi, 'method'=>'post','class'=>'form-horizontal contact'))}}
                                             <div class="form-group">
                                                 <div class="col-xs-12 col-sm-12 col-md-9">
-                                                    <input type="text" class="form-control" placeholder="Kode Order" name="kodeorder" required placeholder="Nama">
+                                                    <input type="text" class="form-control" placeholder="Kode Order" name="kodeorder" placeholder="Nama" required>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn theme"><i class="icon-check"></i> Cari Kode</button>

@@ -29,6 +29,7 @@
             <div class="col-xs-12 col-sm-4 col-lg-3 sidebar">
                 <!-- CATEGORIES LIST -->
                 <div class="accordionmenu section">
+                    @if(list_category()->count() > 0)
                     <h4 class="section-title">Kategori</h4>
                     @foreach(list_category() as $key=>$menu)
                         @if($menu->parent == '0')
@@ -42,7 +43,7 @@
                                         <ul>
                                             @foreach($submenu->anak as $submenu2)
                                             @if($submenu2->parent == $submenu->id)
-                                            <li><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
+                                            <li class="submenu2"><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
                                             @endif
                                             @endforeach
                                         </ul>
@@ -53,9 +54,10 @@
                             @endforeach
                         @endif
                     @endforeach
+                    @endif
                 </div>
                 <!-- /CATEGORIES LIST -->
-                
+                @if(list_koleksi()->count() > 0)
                 <div class="section carousel-iframe">
                     <div class="container">
                         <div class="row carousel-iframe offer">
@@ -102,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- LATEST PRODUCTS -->
+                @endif
             </div>
             <!-- /SIDE BAR -->
 
@@ -122,7 +124,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
                 </div>      
-                <div class="clearfix "></div>
+                <div class="clearfix"></div>
                 <!-- SUB CATEGORY -->
 
                 <!-- CONTAINER SUB WRAPPER -->
@@ -164,7 +166,7 @@
                     <div class="row">
                         @foreach($hasilpro as $myproduk)
                         <div class="mix col-xs-12 col-sm-6 col-lg-4">
-                            <div class="product" data-name="Demo Product1" >
+                            <div class="product" data-name="Demo Product1">
                                 <a href="{{product_url($myproduk)}}" class="product-link clearfix">
                                     @if(is_terlaris($myproduk)) 
                                     <div class="ribbon special badge-hot">Terlaris</div>

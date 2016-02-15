@@ -30,13 +30,14 @@
         <div class="row">
             <!-- SIDE BAR -->
             <div class="col-xs-12 col-sm-4 col-lg-3 sidebar">
+                @if(list_category()->count() > 0)
                 <!-- CATEGORIES LIST -->
                 <div class="accordionmenu section">
                     <h4 class="section-title">Kategori</h4>
                     @foreach(list_category() as $key=>$menu)
                         @if($menu->parent == '0')
                             <a class="menuitem submenuheader" href="{{category_url($menu)}}">{{ $menu->nama }}</a>
-                            @foreach(list_category() as $key=>$submenu)
+                            @foreach($menu->anak as $key=>$submenu)
                                 @if($menu->id == $submenu->parent)
                                 <div class="submenu">
                                     <ul class="unstyled pretty-list arrow-list cl-effect-1">
@@ -45,7 +46,7 @@
                                         <ul>
                                             @foreach($submenu->anak as $submenu2)
                                             @if($submenu2->parent == $submenu->id)
-                                            <li><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
+                                            <li class="submenu2"><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
                                             @endif
                                             @endforeach
                                         </ul>
@@ -58,7 +59,8 @@
                     @endforeach
                 </div>
                 <!-- /CATEGORIES LIST -->
-                
+                @endif
+                @if(list_koleksi()->count() > 0)
                 <!-- Latest products -->
                 <div class="section carousel-iframe">
                     <div class="container">
@@ -107,6 +109,10 @@
                     </div>
                 </div>
                 <!-- LATEST PRODUCTS -->
+                @endif
+                <div class="powerup">
+                    {{pluginSidePowerup()}}
+                </div>
             </div>
             <!-- /SIDE BAR -->
 
@@ -161,14 +167,14 @@
                             </div>
                         </div>
                     </div>
-                </div>          
+                </div>
             
                 <div id="product-list-container" class="section offer products-container portrait three-column" data-layout="grid">
                     <div class="row">
-                    @if(count( list_product(Input::get('show'), @$category, @$collection)) > 0)
+                    @if(count(list_product(Input::get('show'), @$category, @$collection)) > 0)
                         @foreach(list_product(Input::get('show'), @$category, @$collection) as $myproduk)
                         <div class="mix col-xs-12 col-sm-6 col-lg-4">
-                            <div class="product"  data-name="Demo Product1">
+                            <div class="product" data-name="Demo Product1">
                                 <a href="{{product_url($myproduk)}}" class="product-link clearfix">
                                     @if(is_terlaris($myproduk)) 
                                     <div class="ribbon special badge-hot">Terlaris</div>
@@ -228,7 +234,7 @@
                             </div>
                             <br>
                         </div>  
-                        @endforeach    
+                        @endforeach  
                     @else
                     <article class="noresult">Produk tidak ditemukan.</article>
                     <br><br>

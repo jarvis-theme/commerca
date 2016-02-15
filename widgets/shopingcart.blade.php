@@ -26,8 +26,8 @@
                         <table>
                             <tbody>
                                 <tr>
-                                  <td class="right"><b>Total:</b></td>
-                                  <td class="right">{{ price(Shpcart::cart()->total() )}}</td>
+                                    <td class="right"><b>Total:</b></td>
+                                    <td class="right">{{ price(Shpcart::cart()->total() )}}</td>
                                 </tr>
                            </tbody>
                         </table>

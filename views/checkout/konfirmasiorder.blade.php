@@ -38,7 +38,7 @@
                                 <th class="product-name">Jumlah yg belum di Bayar</th>
                                 <th class="product-price">No Resi</th>
                                 <th class="product-action">Status</th>
-                                <a class="pr_name" href="#">Details Order: {{date('d M Y')}}</a>
+                                <a class="pr_name" href="#">Details Order: {{--date('d M Y')--}}</a>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,12 +106,13 @@
                                 </td>
                             </tr>
                         </tbody>
-                       </table>
+                    </table>
                 </div>
                 <br>
                 <div class="clear"></div>
                 <div class="well">
-                @if($order->jenisPembayaran==1)
+                @if($order->jenisPembayaran == 1 && $order->status == 0)
+                    <h2>Konfirmasi Pembayaran</h2>
                     @if($checkouttype==1)
                     {{-- */ $konfirmasi = 'konfirmasiorder/' /* --}}  
                     @else
@@ -119,49 +120,50 @@
                     @endif
 
                     {{Form::open(array('url'=> $konfirmasi.$order->id, 'method'=>'put', 'class'=> 'form-horizontal'))}} 
-                    <div class="control-group">
-                        <label class="control-label" for="inputEmail" > Nama Pengirim</label>
-                        <div class="controls">
-                            <input class="span6" type="text" name="nama" value="{{Input::old('nama')}}" required>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail" > Nama Pengirim</label>
+                            <div class="controls">
+                                <input class="span6" type="text" name="nama" value="{{Input::old('nama')}}" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputEmail"> No Rekening</label>
-                        <div class="controls">
-                            <input type="text" class="span6" name="noRekPengirim" value="{{Input::old('noRekPengirim')}}" required>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail"> No Rekening</label>
+                            <div class="controls">
+                                <input type="text" class="span6" name="noRekPengirim" value="{{Input::old('noRekPengirim')}}" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputEmail"> Rekening Tujuan</label>
-                        <div class="controls" id="norek">
-                            <select name="bank" class="banks">
-                                <option value="">-- Pilih Bank Tujuan --</option>
-                                @foreach (list_banks() as $bank)
-                                <option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
-                                @endforeach
-                            </select>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail"> Rekening Tujuan</label>
+                            <div class="controls" id="norek">
+                                <select name="bank" class="banks">
+                                    <option value="">-- Pilih Bank Tujuan --</option>
+                                    @foreach (list_banks() as $bank)
+                                    <option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="control-group">
-                        <label class="control-label" for="inputEmail"> Jumlah</label>
-                        <div class="controls">
-                            @if($checkouttype==1)
-                                <input class="span6" type="text" name="jumlah" value="{{$order->total}}" required>
-                            @else
-                                @if($order->status < 2)
-                                <input class="span6" type="text" name="jumlah" value="{{$order->dp}}" required>
-                                @elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-                                <input class="span6" type="text" name="jumlah" value="{{$order->total - $order->dp}}" required>
+                        <br>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail"> Jumlah</label>
+                            <div class="controls">
+                                @if($checkouttype==1)
+                                    <input class="span6" type="text" name="jumlah" value="{{$order->total}}" required>
+                                @else
+                                    @if($order->status < 2)
+                                    <input class="span6" type="text" name="jumlah" value="{{$order->dp}}" required>
+                                    @elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
+                                    <input class="span6" type="text" name="jumlah" value="{{$order->total - $order->dp}}" required>
+                                    @endif
                                 @endif
-                            @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls right">
-                            <button type="submit" class="btn theme"><i class="icon-check"></i> Konfirmasi Order</button>
+                        <br>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn theme"><i class="icon-check"></i> Konfirmasi</button>
+                            </div>
                         </div>
-                    </div>
                     {{Form::close()}}
                 @endif
                     <br>
@@ -169,7 +171,7 @@
                     <h3><center>Paypal Payment Details</center></h3><br>
                     <hr>
                     <div class="table-responsive">
-                        <table class='table table-bordered'>
+                        <table class="table table-bordered">
                             <tr><td>Payment Status</td><td>:</td><td>{{$paymentinfo['payment_status']}}</td></tr>
                             <tr><td>Payment Date</td><td>:</td><td>{{$paymentinfo['payment_date']}}</td></tr>
                             <tr><td>Address Name</td><td>:</td><td>{{$paymentinfo['address_name']}}</td></tr>
@@ -183,10 +185,10 @@
                     @endif 
               
                     @if($order->jenisPembayaran==2)
-                        <h3><center>Konfirmasi Pemabayaran Via Paypal</center></h3><br>
-                        <p>Silakan melakukan pembayaran dengan paypal Anda secara online via paypal payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum {{$expired}}. Klik tombol "Bayar Dengan Paypal" di bawah untuk melanjutkan proses pembayaran.</p>
-                        {{$paypalbutton}}
-                        <br>
+                    <h3><center>Konfirmasi Pemabayaran Via Paypal</center></h3><br>
+                    <p>Silakan melakukan pembayaran dengan paypal Anda secara online via paypal payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum {{$expired}}. Klik tombol "Bayar Dengan Paypal" di bawah untuk melanjutkan proses pembayaran.</p>
+                    {{$paypalbutton}}
+                    <br>
                     @elseif($order->jenisPembayaran==6)
                         @if($order->status == 0)
                         <h3><center>Konfirmasi Pembayaran Via Bitcoin</center></h3><br>

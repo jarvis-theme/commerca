@@ -5,7 +5,7 @@
                     <div class="breadcrumbs">
                         <ul class="unstyled">
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li class="active">Login Area</li>                                                
+                            <li class="active">Login Area</li>
                         </ul>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                         <ul class="unstyled float-right"> Login Area </ul>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
     <!-- /BREADCRUMBS -->
@@ -32,13 +32,13 @@
                     <div class="section  module-list-items">
                         <div class="cat-image">
                             <a href="{{url($banner->url)}}">
-                                <img src="{{banner_image_url($banner->gambar)}}" width="100%" alt="Info Promo" />
-                            </a>                                    
+                                <img src="{{banner_image_url($banner->gambar)}}" alt="Info Promo" />
+                            </a>
                         </div>
-                    </div>      
+                    </div>
                     @endforeach
                 </div>
-                <!-- /SIDE BAR -->                      
+                <!-- /SIDE BAR -->
 
                 <!-- MAIN CONTENT -->
                 <div class="col-xs-12 col-sm-8 col-lg-9 main">
@@ -50,7 +50,7 @@
                                 <table class="form">
                                     <tbody>
                                         <tr>
-                                            <td>E-Mail:</td>
+                                            <td>Email:</td>
                                             <td><input type="text" placeholder="email" name="email" required></td>
                                         </tr>
                                         <tr>
