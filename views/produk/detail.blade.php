@@ -253,19 +253,14 @@
                         <div class="bs-example bs-example-tabs">
                             <ul id="myTab" class="nav nav-tabs">
                                 <li class="active"><a href="#desc" data-toggle="tab">Deskripsi</a></li>
-                                <li><a href="#review" data-toggle="tab">Review</a></li>
                                 <li><a href="#comment" data-toggle="tab">Comment</a></li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="desc">
                                     <p>{{$produk->deskripsi}}</p>
                                 </div>
-                                <div class="tab-pane fade" id="review">
-                                    {{pluginTrustklik()}}
-                                </div>
                                 <div class="tab-pane fade" id="comment">
-                                    {{$fbscript}}
-                                    {{fbcommentbox(product_url($produk), '100%', '5', 'light')}}
+                                    {{ pluginComment(product_url($produk), @$produk) }}
                                 </div>
                             </div>
                         </div>

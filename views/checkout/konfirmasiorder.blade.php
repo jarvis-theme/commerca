@@ -27,15 +27,17 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-12 main">
                 <!-- CART ITEMS -->
-                <div class="section">
+                <div class="section table-responsive">
                     <table class="my-cart">
                         <thead>
                             <tr>
                                 <th class="product-action">Kode Order</th>
-                                <th class="product-action hidden-xs">Tgl Order</th>
+                                <th class="product-action">Tgl Order</th>
                                 <th class="product-name">Detail Produk</th>
                                 <th class="product-price">Total</th>
+                                @if($checkouttype != 1)
                                 <th class="product-name">Jumlah yg belum di Bayar</th>
+                                @endif
                                 <th class="product-price">No Resi</th>
                                 <th class="product-action">Status</th>
                                 <a class="pr_name" href="#">Details Order: {{--date('d M Y')--}}</a>
@@ -57,6 +59,7 @@
                                     @endif
                                 </td>
                                 <td>{{ price($order->total) }}</td>
+                                @if($checkouttype != 1)
                                 <td class="align_center vline">
                                     @if($checkouttype==1)
                                     - {{price($order->total)}}
@@ -70,6 +73,7 @@
                                         @endif
                                     @endif
                                 </td>
+                                @endif
                                 <td class="align_center vline">{{ $order->noResi }}</td>
                                 <td class="align_center vline">
                                     @if($checkouttype==1)
@@ -80,9 +84,9 @@
                                         @elseif($order->status==2)
                                         <span class="label label-info">Pembayaran diterima</span>
                                         @elseif($order->status==3)
-                                        <span class="label label-info">Terkirim</span>
+                                        <span class="label label-success">Terkirim</span>
                                         @elseif($order->status==4)
-                                        <span class="label label-info">Batal</span>
+                                        <span class="label label-default">Batal</span>
                                         @endif
                                     @else 
                                         @if($order->status==0)
@@ -96,9 +100,9 @@
                                         @elseif($order->status==4)
                                         <span class="label label-info">Pembayaran lunas</span>
                                         @elseif($order->status==5)
-                                        <span class="label label-info">Terkirim</span>
+                                        <span class="label label-success">Terkirim</span>
                                         @elseif($order->status==6)
-                                        <span class="label label-info">Batal</span>
+                                        <span class="label label-default">Batal</span>
                                         @elseif($order->status==7)
                                         <span class="label label-info">Konfirmasi Pelunasan diterima</span>
                                         @endif
@@ -111,8 +115,8 @@
                 <br>
                 <div class="clear"></div>
                 <div class="well">
-                @if($order->jenisPembayaran == 1 && $order->status == 0)
-                    <h2>Konfirmasi Pembayaran</h2>
+                    @if($order->jenisPembayaran == 1 && $order->status == 0)
+                    <h2>{{trans('content.step5.confirm_btn')}}</h2>
                     @if($checkouttype==1)
                     {{-- */ $konfirmasi = 'konfirmasiorder/' /* --}}  
                     @else
@@ -161,12 +165,13 @@
                         <br>
                         <div class="control-group">
                             <div class="controls">
-                                <button type="submit" class="btn theme"><i class="icon-check"></i> Konfirmasi</button>
+                                <button type="submit" class="btn theme"><i class="icon-check"></i> {{trans('content.step5.confirm_btn')}}</button>
                             </div>
                         </div>
                     {{Form::close()}}
-                @endif
+                    @endif
                     <br>
+
                     @if($paymentinfo!=null)
                     <h3><center>Paypal Payment Details</center></h3><br>
                     <hr>
@@ -185,19 +190,32 @@
                     @endif 
               
                     @if($order->jenisPembayaran==2)
-                    <h3><center>Konfirmasi Pemabayaran Via Paypal</center></h3><br>
-                    <p>Silakan melakukan pembayaran dengan paypal Anda secara online via paypal payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum {{$expired}}. Klik tombol "Bayar Dengan Paypal" di bawah untuk melanjutkan proses pembayaran.</p>
-                    {{$paypalbutton}}
+                    <center>
+                        <h3><strong>{{trans('content.step5.confirm_btn')}} Paypal</strong></h3><hr>
+                        <p>{{trans('content.step5.paypal')}}</p>
+                    </center>
+                    <center id="paypal">{{$paypalbutton}}</center>
                     <br>
-                    @elseif($order->jenisPembayaran==6)
-                        @if($order->status == 0)
-                        <h3><center>Konfirmasi Pembayaran Via Bitcoin</center></h3><br>
-                        <p>Silahkan melakukan pembayaran dengan bitcoin Anda secara online via bitcoin payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum <b>{{$expired_bitcoin}}</b>. Klik tombol "Pay with Bitcoin" di bawah untuk melanjutkan proses pembayaran.</p>
+                    @elseif($order->jenisPembayaran==5 && $order->status == 0)
+                    <center>
+                        <h3><strong>{{trans('content.step5.confirm_btn')}} DOKU MyShortCart</strong></h3><hr>
+                        <p>{{trans('content.step5.doku')}}</p>
+                        {{ $doku_button }}
+                    </center>
+                    <br>
+                    @elseif($order->jenisPembayaran==6 && $order->status == 0)
+                    <center>
+                        <h3><strong>{{trans('content.step5.confirm_btn')}} Bitcoin</strong></h3><hr>
+                        <p>{{trans('content.step5.bitcoin')}}</p>
                         {{$bitcoinbutton}}
-                        <br>
-                        @elseif($order->status == 4)
-                        <h3><center><b>Batas waktu pembayaran Bitcoin anda telah habis.</b></center></h3><br>
-                        @endif
+                    </center>
+                    <br>
+                    @elseif($order->jenisPembayaran == 8 && $order->status == 0)
+                    <center>
+                        <h3><strong>{{trans('content.step5.confirm_btn')}} Veritrans</strong></h3><hr>
+                        <p>{{trans('content.step5.veritrans')}}</p>
+                        <button class="btn-veritrans" onclick="location.href='{{ $veritrans_payment_url }}'">{{trans('content.step5.veritrans_btn')}}</button>
+                    </center>
                     @endif
                 </div>
             </div>

@@ -68,7 +68,7 @@
                                     <p><a href="mailto:{{$kontak->email}}">{{@$kontak->email}}</a></p>
                                 </div>
                             </div>
-                            @if($kontak->ym)
+                            @if(!empty($kontak->ym))
                             <div class="media">
                                 <div class="pull-left">
                                     <i class="icon-chat2"></i>
@@ -133,6 +133,9 @@
                                 @endforeach
                                 @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                                 <li><img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Doku" /></li>
+                                @endif
+                                @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
+                                <li><img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans"></li>
                                 @endif
                             </ul>
                         </div>
