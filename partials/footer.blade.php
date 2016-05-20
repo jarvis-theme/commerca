@@ -118,7 +118,9 @@
                             
                             <ul class="card-icons">
                                 @foreach(list_banks() as $value)
-                                <li><img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" /></li>
+                                    @if($value->status == 1)
+                                    <li><img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" /></li>
+                                    @endif
                                 @endforeach
                                 @foreach(list_payments() as $pay)
                                     @if($pay->nama == 'paypal' && $pay->aktif == 1)
@@ -163,4 +165,4 @@
     </div>
 </div>
 <!-- /SITE FOOTER -->
-{{pluginPowerup()}}
+{{pluginPowerup()}} 

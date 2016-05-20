@@ -116,7 +116,7 @@
                 <div class="clear"></div>
                 <div class="well">
                     @if($order->jenisPembayaran == 1 && $order->status == 0)
-                    <h2>{{trans('content.step5.confirm_btn')}}</h2>
+                    <h2>{{trans('content.step5.confirm_btn')." ".trans('content.step3.transfer')}}</h2>
                     @if($checkouttype==1)
                     {{-- */ $konfirmasi = 'konfirmasiorder/' /* --}}  
                     @else
@@ -141,7 +141,7 @@
                             <div class="controls" id="norek">
                                 <select name="bank" class="banks">
                                     <option value="">-- Pilih Bank Tujuan --</option>
-                                    @foreach (list_banks() as $bank)
+                                    @foreach ($banktrans as $bank)
                                     <option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
                                     @endforeach
                                 </select>
