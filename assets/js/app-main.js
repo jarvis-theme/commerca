@@ -44,21 +44,27 @@ require.config({
 		"ddaccordion" : {
 			deps : ['jquery'],
 		},
+		"lib_packages" : {
+			deps : ['jquery'],
+		},
+		'carouFredSel'	: {
+			deps : ['jquery'],	
+		}
 	},
 
 	paths: {
 		// LIBRARY
 		bootstrap 		: dirTema+'/assets/js/lib/bootstrap.min',
 		carouFredSel	: dirTema+'/assets/js/lib/jquery.carouFredSel.min',
-		cart			: 'js/shop_cart',
+		cart			: '//cdn2.jarvis-store.com/js/shop_cart',
 		flexslider		: dirTema+'/assets/js/lib/jquery.flexslider.min',
-		jq_ui			: 'js/jquery-ui',
+		jq_ui			: '//cdn2.jarvis-store.com/js/jquery-ui',
 		jq_zoom			: dirTema+'/assets/js/lib/jquery.zoom-min',
 		jquery 			: dirTema+'/assets/js/lib/jquery.min',
 		lib_packages	: dirTema+'/assets/js/lib/package.min',
 		mixitup			: dirTema+'/assets/js/lib/jquery.mixitup.min',
 		modernizr		: dirTema+'/assets/js/lib/modernizr.min',
-		noty			: 'js/jquery.noty',
+		noty			: '//cdn2.jarvis-store.com/js/jquery.noty',
 		nouislider		: dirTema+'/assets/js/lib/jquery.nouislider.min',
 		scripts			: dirTema+'/assets/js/lib/scripts',
 		// package			: dirTema+'/assets/js/lib/package.min',
@@ -71,7 +77,7 @@ require.config({
 		ddaccordion		: dirTema+'/assets/js/lib/ddaccordion',
 
 		// ROUTE
-		router          : 'js/router',
+		router          : '//cdn2.jarvis-store.com/js/router',
 
 		// CONTROLLER
 		home            : dirTema+'/assets/js/pages/home',
