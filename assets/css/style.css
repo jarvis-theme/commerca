@@ -4334,3 +4334,4 @@ form[name="order"] > input[name="SAVE"]:hover {
 .table-responsive { overflow-x: auto; }
 .btn-veritrans { background: #00aee7; border: none; padding: 10px; color: #fff }
 .btn-veritrans:hover { cursor: pointer; opacity: 0.7 }
+.header-social-icons ul li a img:hover{ opacity: 0.8}

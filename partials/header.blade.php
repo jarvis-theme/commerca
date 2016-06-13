@@ -45,6 +45,13 @@
                         @if($kontak->gp)
                         <li><a target="_blank" href="{{url($kontak->gp)}}" class="googleplus" title="Google+"><br/></a></li>
                         @endif
+                        @if(@$kontak->picmix)
+                        <li>
+                            <a target="_blank" href="{{url($kontak->picmix)}}" title="Google+">
+                                <img src="https://s3-ap-southeast-1.amazonaws.com/cdn2.jarvis-store.com/blogs/event/icon-picmix.png" style="height: 25px;">
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                 </div>
                 <!-- /social icons -->
@@ -86,6 +93,7 @@
                 <!-- main menu -->
                 <ul class="main-menu menu visible-lg">
                     <li class="active"><a href="{{url('/')}}"><i class="icon-home"></i></a></li>
+                    @if(count(category_menu()) > 0)
                     @foreach(category_menu() as $key=>$menu)
                     @if($menu->parent=='0')
                     <li>
@@ -111,6 +119,7 @@
                     </li>
                     @endif
                     @endforeach
+                    @endif
                 </ul>
                 <!-- /main menu -->
                 
