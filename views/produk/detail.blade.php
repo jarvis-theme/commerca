@@ -204,7 +204,7 @@
                                                         <div class="space30 clearfix"></div>
                                                         <div class="qty-btngroup clearfix">
                                                             <button type="button" class="minus">-</button>
-                                                                <input type="text" class="qty" name='qty' value="1" size="2" id="qty-input">
+                                                                <input type="text" class="qty" name="qty" value="1" size="2" id="qty-input" pattern="[0-9]">
                                                             <button type="button" class="plus">+</button>
                                                         </div>
                                                         <div class="space30 clearfix"></div>

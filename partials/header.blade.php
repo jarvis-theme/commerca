@@ -37,11 +37,14 @@
                         <li><a target="_blank" href="{{url($kontak->fb)}}" class="facebook" title="Facebook"><br/></a></li>
                         @endif
                         @if($kontak->ig)
-                        <!-- <li><a target="_blank" href="{{url($kontak->ig)}}" class="linkedin" title="Instagram"><br/></a></li> -->
+                        <li><a target="_blank" href="{{url($kontak->ig)}}" class="social-media instagram" title="Instagram"><i class="icon-instagram2"></i></a></li>
                         @endif
-                        <!-- <li><a href="#" class="rss"><br/></a></li>
-                        <li><a href="#" class="skype"><br/></a></li>
-                        <li><a href="#" class="deviantart"><br/></a></li> -->
+                        @if($kontak->tl)
+                        <li><a target="_blank" href="{{url($kontak->tl)}}" class="social-media tumblr" title="Tumblr"><i class="icon-tumblr"></i></a></li>
+                        @endif
+                        @if($kontak->pt)
+                        <li><a target="_blank" href="{{url($kontak->pt)}}" class="social-media pinterest" title="Pinterest"><i class="icon-pinterest2"></i></a></li>
+                        @endif
                         @if($kontak->gp)
                         <li><a target="_blank" href="{{url($kontak->gp)}}" class="googleplus" title="Google+"><br/></a></li>
                         @endif
