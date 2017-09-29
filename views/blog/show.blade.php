@@ -78,7 +78,9 @@
                             <div class="description">
                                 <small class="timeblog">
                                     <span><i class="icon-calendar4"></i>&nbsp;{{waktuTgl($detailblog->created_at)}}</span>
+                                    @if(!empty($detailblog->kategori->nama))
                                     <span>&nbsp;&nbsp; <i class="icon-tag"></i>&nbsp;<a href="{{url('blog/category/'.$detailblog->kategori->nama)}}">{{$detailblog->kategori->nama}}</a></span>
+                                    @endif
                                 </small><br><br>
                                 {{$detailblog->isi}}
                             </div>
@@ -91,7 +93,7 @@
                                 </ul>
                             </div>
                             {{$fbscript}}
-                            {{fbcommentbox(slugBlog($detailblog), '640px', '5', 'light')}}
+                            {{fbcommentbox(slugBlog($detailblog), '100%', '5', 'light')}}
                         </div>
                         <div class="clearfix "></div>
                     </div>

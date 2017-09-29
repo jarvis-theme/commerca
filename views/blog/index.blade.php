@@ -81,8 +81,10 @@
                                 <div class="description">
                                     <div class="cat-image"><h2 class="blogtitle">{{$value->judul}}</h2></div>
                                     <small class="timeblog"><span class="icon-calendar"></span> {{waktuTgl($value->created_at)}} <span>&nbsp;&nbsp;</span></small>
-                                    <br><br>
-                                    {{blogIndex($value->isi,250)}}
+                                    <img src="{{ imgString($value->isi) }}" class="blog-img" />
+                                    <div>
+                                        {{blogIndex($value->isi,250)}}
+                                    </div>
                                 </div>
                             </div>
                         </a>

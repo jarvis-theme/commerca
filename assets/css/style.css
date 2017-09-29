@@ -2912,12 +2912,9 @@ color: #FFF;
 			
 		}
 		.home-container .tab-content .product{
-		
-		
-		position: relative;
-		
-		text-align:left !important;
-		
+			position: relative;
+			text-align:left !important;
+			margin: 5px 0;
 		}
 		#product-list-container.product-list .mix_all .product .button-add{display: none !important;}
 		.btn-group>.btn, .btn-group-vertical>.btn {
@@ -4298,7 +4295,7 @@ body, h1, h2, h3, h4, h5, h6, input, select, textarea, .form-control, button {
 .annonce:hover{	background-color: #FEAA37 !important; }
 .products-container .product .ribbon{  border-top-color:#FEAA37; border-right-color:#FEAA37; }
 .pagination .links b{  border-bottom-color:#FEAA37; }.noresult{font-style:italic; text-align:center}
-.dateblog{margin-left: 15px}.blogtitle{margin: 0}.timeblog{margin:8px}.recentblog{margin-left: 15px}#navblog{margin-top:0}
+.dateblog{margin-left: 15px}.blogtitle{margin: 0}.timeblog{margin:8px 0}.recentblog{margin-left: 15px}#navblog{margin-top:0}
 #norek{width: 40% !important}.banks{width: 100%}.right{text-align: right}.maplocation{float:right;width:100%}
 .collection{width: 200px}.new-homeproduct{height: 257px}
 .badge-hot{background-color: #d9534f; color: #f9f9f9 !important; border-top-color: transparent !important; border-right-color: transparent !important;}
@@ -4346,3 +4343,4 @@ form[name="order"] > input[name="SAVE"]:hover {
 .header-social-icons .social-media.instagram:hover { background: #957361; }
 .header-social-icons .social-media.tumblr:hover { background: #36465d; }
 .header-social-icons .social-media.pinterest:hover { background: #cd2129; }
+.blog-img { padding: 10px 0; }

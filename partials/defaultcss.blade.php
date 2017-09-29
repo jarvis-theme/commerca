@@ -8,9 +8,9 @@
 <!-- CSS styles  -->
 {{generate_theme_css('commerca/assets/css/bootstrap.min.css')}}
 @if($tema->isiCss=='')
-    {{generate_theme_css('commerca/assets/css/style.css?v=002')}}
+    {{generate_theme_css('commerca/assets/css/style.css?v=006')}}
 @else
-    {{generate_theme_css('commerca/assets/css/editstyle.css?v=002')}}
+    {{generate_theme_css('commerca/assets/css/editstyle.css?v=006')}}
 @endif
 {{generate_theme_css('commerca/assets/css/responsive.css')}}
 {{generate_theme_css('commerca/assets/css/animate.css')}}
